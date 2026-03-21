@@ -1,0 +1,124 @@
+.section {
+  padding: 6rem 4rem;
+  background: var(--bg-main);
+}
+
+.label {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 4rem;
+  max-width: 400px;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2.5rem;
+}
+
+.step {
+  border-left: 1px solid var(--border);
+  padding-left: 1.5rem;
+}
+
+.stepNum {
+  font-family: 'Syne', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--accent);
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.stepTitle {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.stepDesc {
+  font-size: 0.85rem;
+  color: var(--gray);
+  line-height: 1.7;
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .section {
+    padding: 4rem 1.5rem;
+  }
+
+  .title {
+    max-width: 100%;
+    margin-bottom: 2.5rem;
+  }
+
+  /* ← 2x2 grid */
+  .steps {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;                        /* gap dihapus, pakai border sebagai pemisah */
+  }
+
+  .step {
+    border-left: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 1.5rem 1.25rem;      /* padding seragam semua sisi */
+  }
+
+  /* Hapus border bawah di row terakhir (item 3 & 4) */
+  .step:nth-last-child(-n+2) {
+    border-bottom: none;
+  }
+
+  /* Item di kolom kanan — hapus border kiri duplikat */
+  .step:nth-child(even) {
+    border-left: 1px solid var(--border);
+  }
+
+  .stepNum {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .stepTitle {
+    font-size: 0.9rem;
+  }
+
+  .stepDesc {
+    font-size: 0.78rem;
+    line-height: 1.6;
+  }
+}
+
+/* ── Small Mobile ── */
+@media (max-width: 480px) {
+  .section {
+    padding: 3rem 1rem;
+  }
+
+  .stepNum {
+    font-size: 1.75rem;
+  }
+
+  .stepTitle {
+    font-size: 0.85rem;
+  }
+
+  .stepDesc {
+    font-size: 0.75rem;
+  }
+}

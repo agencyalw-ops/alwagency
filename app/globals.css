@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap');
+
+:root {
+  /* Default: Dark Mode */
+  --black: #0a0a0a;
+  --white: #f5f4f0;
+  --accent: #c8f060;
+  --gray: #888;
+  --border: rgba(255, 255, 255, 0.08);
+
+  --bg-main: var(--black);
+  --text-main: var(--white);
+}
+
+/* White Mode Class */
+[data-theme='light'] {
+  --black: #0a0a0a;
+  --white: #ffffff;
+  --accent: #a3cf3d; /* Sedikit lebih kontras */
+  --gray: #555;
+  --border: rgba(0, 0, 0, 0.1);
+
+  --bg-main: var(--white);
+  --text-main: var(--black);
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg-main);
+  color: var(--text-main);
+  font-family: 'DM Sans', sans-serif;
+  transition: background 0.4s ease, color 0.4s ease; /* Transisi halus */
+}
+
+/* Tambahan agar link & border juga ikut berubah warnanya */
+a { color: inherit; text-decoration: none; }
+.border-theme { border: 1px solid var(--border); }
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+/* Styling Tombol Theme Toggle */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 9999px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-main);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background-color: var(--accent);
+  color: var(--black); /* Berubah jadi hitam saat hover agar kontras */
+  border-color: var(--accent);
+}
+
+.theme-toggle:active {
+  transform: scale(0.92);
+}
+
+/* Animasi Ikon */
+.theme-toggle svg {
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+}

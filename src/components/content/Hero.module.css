@@ -1,0 +1,157 @@
+.hero {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 6rem 4rem 4rem;
+  position: relative;
+  overflow: hidden;
+  animation: fadeUp 0.8s ease both;
+}
+
+.decoCircle {
+  position: absolute;
+  right: -8%;
+  top: 10%;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  pointer-events: none;
+}
+
+.decoCircle::before {
+  content: '';
+  position: absolute;
+  inset: 80px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 2rem;
+}
+
+.tag::before {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.heading {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: clamp(3.5rem, 8vw, 7rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  max-width: 900px;
+  margin-bottom: 2rem;
+}
+
+.heading em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent);
+}
+
+.sub {
+  font-size: 1.1rem;
+  color: var(--gray);
+  max-width: 420px;
+  line-height: 1.7;
+  margin-bottom: 3rem;
+}
+
+.btns {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 4rem;
+}
+
+.btnPrimary {
+  background: var(--accent);
+  color: var(--bg-main);
+  padding: 0.85rem 2rem;
+  border-radius: 3rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.btnPrimary:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.btnOutline {
+  border: 1px solid var(--border);
+  color: var(--);
+  padding: 0.85rem 2rem;
+  border-radius: 3rem;
+  font-size: 0.95rem;
+  transition: border-color 0.2s;
+}
+
+.btnOutline:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.stats {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.statNum {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 2rem;
+  letter-spacing: -0.03em;
+  color: var(--text-main);
+}
+
+.statLabel {
+  font-size: 0.8rem;
+  color: var(--gray);
+}
+
+.divider {
+  width: 1px;
+  height: 40px;
+  background: var(--border);
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 4rem 1.5rem 3rem;
+    min-height: auto;
+  }
+
+  .decoCircle {
+    display: none;
+  }
+
+  .stats {
+    gap: 1.5rem;
+  }
+}

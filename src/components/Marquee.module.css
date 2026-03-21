@@ -1,0 +1,58 @@
+.wrap {
+  overflow: hidden;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 1.2rem 0;
+  background: var(--bg-main);
+}
+
+.track {
+  display: flex;
+  gap: 3rem;
+  animation: marquee 20s linear infinite;
+  width: max-content;
+}
+
+.item {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gray);
+  white-space: nowrap;
+}
+
+.dot {
+  color: var(--accent);
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .track {
+    gap: 2rem;              /* gap lebih rapat di mobile */
+    animation-duration: 14s; /* lebih cepat karena layar lebih kecil */
+  }
+
+  .item {
+    font-size: 0.72rem;     /* sedikit lebih kecil */
+    letter-spacing: 0.12em;
+  }
+
+  .dot {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .track {
+    gap: 1.5rem;
+    animation-duration: 10s;
+  }
+
+  .item {
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+  }
+}
