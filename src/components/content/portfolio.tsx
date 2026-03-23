@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import style from "./portfolio.module.css"
 
-const PER_PAGE = 3  // tampil 3 card dulu, load more tambah 3 lagi
+const PER_PAGE = 3
 
 interface PortfolioItem {
   id: number
@@ -14,12 +14,29 @@ interface PortfolioItem {
   link?: string
 }
 
+// Generate screenshot URL dari domain menggunakan microlink.io (gratis)
+const getScreenshotUrl = (siteUrl?: string) => {
+  if (!siteUrl || siteUrl === "#") return null
+  return `https://api.microlink.io/?url=${encodeURIComponent(siteUrl)}&screenshot=true&meta=false&embed=screenshot.url`
+}
+
 function Card({ title, description, imageUrl, linkUrl }: any) {
+  const [imgError, setImgError] = useState(false)
+  const screenshotUrl = getScreenshotUrl(linkUrl)
+  const finalImage = screenshotUrl && !imgError ? screenshotUrl : imageUrl
+
   return (
     <div className={style.card}>
       <div className={style.imageWrapper}>
-        {imageUrl && (
-          <img src={imageUrl} alt={title} className={style.image} />
+        {finalImage ? (
+          <img
+            src={finalImage}
+            alt={title}
+            className={style.image}
+            onError={() => setImgError(true)}  // fallback ke image asli jika screenshot gagal
+          />
+        ) : (
+          <div className={style.imagePlaceholder}>No Preview</div>
         )}
       </div>
       <div className={style.cardContent}>
@@ -38,25 +55,24 @@ function Card({ title, description, imageUrl, linkUrl }: any) {
 export default function Portfolio() {
   const [data, setData] = useState<PortfolioItem[]>([])
   const [visibleCount, setVisibleCount] = useState(PER_PAGE)
-  const newRowRef = useRef<HTMLDivElement>(null)  // ref untuk scroll ke row baru
+  const newRowRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     fetch("/api/portfolio")
       .then(res => res.json())
-      .then(result => setData(result.portfolio))  // ← fix: ambil array dari object
+      .then(result => setData(result.portfolio))
       .catch(() => {
         setData([
-          { id: 1, title: "Marketplace Tiket Hiking", description: "Otomatisasi pembayaran dengan Midtrans Partner.", image: "https://via.placeholder.com/400x250", link: "#" },
-          { id: 2, title: "System Automation", description: "Laporan keuangan otomatis untuk UMKM.", image: "https://via.placeholder.com/400x250", link: "#" },
-          { id: 3, title: "Landing Page Premium", description: "Halaman arahan konversi tinggi untuk startup.", image: "https://via.placeholder.com/400x250", link: "#" },
-          { id: 4, title: "Dashboard Analytics", description: "Visualisasi data real-time untuk monitoring bisnis.", image: "https://via.placeholder.com/400x250", link: "#" },
-          { id: 5, title: "E-Commerce Platform", description: "Toko online lengkap dengan manajemen produk.", image: "https://via.placeholder.com/400x250", link: "#" },
-          { id: 6, title: "Mobile App UI", description: "Antarmuka aplikasi mobile layanan kesehatan.", image: "https://via.placeholder.com/400x250", link: "#" },
+          { id: 1, title: "Marketplace Tiket Hiking", description: "Otomatisasi pembayaran dengan Midtrans Partner.", image: "", link: "https://tokopedia.com" },
+          { id: 2, title: "System Automation", description: "Laporan keuangan otomatis untuk UMKM.", image: "", link: "https://shopee.co.id" },
+          { id: 3, title: "Landing Page Premium", description: "Halaman arahan konversi tinggi untuk startup.", image: "", link: "https://gojek.com" },
+          { id: 4, title: "Dashboard Analytics", description: "Visualisasi data real-time untuk monitoring bisnis.", image: "", link: "https://bukalapak.com" },
+          { id: 5, title: "E-Commerce Platform", description: "Toko online lengkap dengan manajemen produk.", image: "", link: "https://lazada.co.id" },
+          { id: 6, title: "Mobile App UI", description: "Antarmuka aplikasi mobile layanan kesehatan.", image: "", link: "https://halodoc.com" },
         ])
       })
   }, [])
 
-  // Scroll ke row baru setelah load more
   useEffect(() => {
     if (visibleCount > PER_PAGE && newRowRef.current) {
       newRowRef.current.scrollIntoView({ behavior: "smooth", block: "start" })
@@ -66,17 +82,12 @@ export default function Portfolio() {
   const visibleItems = data.slice(0, visibleCount)
   const hasMore = visibleCount < data.length
 
-  const handleLoadMore = () => {
-    setVisibleCount(prev => prev + PER_PAGE)  // tambah 3 setiap klik
-  }
-
+  const handleLoadMore = () => setVisibleCount(prev => prev + PER_PAGE)
   const handleShowLess = () => {
-    setVisibleCount(PER_PAGE)  // kembali ke 3
-    // scroll ke atas section portfolio
+    setVisibleCount(PER_PAGE)
     document.getElementById("portfolio")?.scrollIntoView({ behavior: "smooth", block: "start" })
   }
 
-  // Pisah visibleItems per baris (3 per row) untuk ref scroll
   const rows: PortfolioItem[][] = []
   for (let i = 0; i < visibleItems.length; i += PER_PAGE) {
     rows.push(visibleItems.slice(i, i + PER_PAGE))
@@ -86,10 +97,8 @@ export default function Portfolio() {
     <section className={style.portfolio} id="portfolio">
       <div className={style.container}>
         <h2 className={style.sectionTitle}>Portfolio Agency Kami</h2>
-
         <div className={style.grid}>
           {rows.map((row, rowIndex) => (
-            // ref dipasang di row terakhir — target scroll saat load more
             <div
               key={rowIndex}
               ref={rowIndex === rows.length - 1 && rowIndex > 0 ? newRowRef : null}
@@ -107,7 +116,6 @@ export default function Portfolio() {
             </div>
           ))}
         </div>
-
         <div className={style.viewMoreContainer}>
           {hasMore ? (
             <button className={style.viewMoreBtn} onClick={handleLoadMore}>
