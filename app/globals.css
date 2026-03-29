@@ -4,7 +4,7 @@
   /* Default: Dark Mode */
   --black: #0a0a0a;
   --white: #f5f4f0;
-  --accent: #c8f060;
+  --accent: #16eccf;
   --gray: #888;
   --border: rgba(255, 255, 255, 0.08);
 
@@ -16,7 +16,7 @@
 [data-theme='light'] {
   --black: #0a0a0a;
   --white: #ffffff;
-  --accent: #a3cf3d; /* Sedikit lebih kontras */
+  --accent: #07c5bc; /* Sedikit lebih kontras */
   --gray: #555;
   --border: rgba(0, 0, 0, 0.1);
 
