@@ -1,27 +1,37 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link";
 import styles from "./Navbar.module.css";
 import ThemeToggle from "./ThemeTogle";
 
-export default function Navbar( { setPage }: { setPage: (page: string) => void }) {
+export default function Navbar() { // ← hapus prop setPage
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const closeMenu = () => setMenuOpen(false);
 
   return (
     <nav className={styles.nav}>
-      <div className={styles.logo} onClick={() => setPage("home")}>
+      {/* Logo → scroll ke atas */}
+      <Link href="/#hero" className={styles.logo} onClick={closeMenu}>
         alw<span>.</span>
-      </div>
+      </Link>
 
       <ul className={`${styles.navLinks} ${menuOpen ? styles.open : ""}`}>
-        <li><a href="#hero" onClick={() => setMenuOpen(false)}>home</a></li>
-        <li><a href="#services" onClick={() => setMenuOpen(false)}>Layanan</a></li>
-        <li><a href="#portfolio" onClick={() => setMenuOpen(false)}>Portofolio</a></li>
         <li>
-          <a href="#contact" className={styles.cta} onClick={() => setMenuOpen(false)}>
-            Hubungi Kami
-          </a>
+          <Link href="/#hero" onClick={closeMenu}>home</Link>
         </li>
-        <ThemeToggle/>
+        <li>
+          <Link href="/#services" onClick={closeMenu}>Layanan</Link>
+        </li>
+        <li>
+          <Link href="/#portfolio" onClick={closeMenu}>Portofolio</Link>
+        </li>
+        <li>
+          <Link href="/#contact" className={styles.cta} onClick={closeMenu}>
+            Hubungi Kami
+          </Link>
+        </li>
+        <ThemeToggle />
       </ul>
 
       <button
