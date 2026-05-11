@@ -45,7 +45,7 @@ const services = [
     num: '04',
     title: 'Landing Page & Funnel',
     tagline: 'One page. One goal. Maximum conversions.',
-    desc: 'High-converting pages for product launches, ad campaigns, events, or lead generation. Every element is purposefully placed to guide visitors toward a single action — whether that's buying, signing up, or getting in touch.',
+    desc: 'High-converting pages for product launches, ad campaigns, events, or lead generation. Every element is purposefully placed to guide visitors toward a single action — whether that\'s buying, signing up, or getting in touch.',
     details: ['Conversion-focused copywriting guidance','Fast load time (Core Web Vitals optimised)','A/B testing ready','Lead capture & CRM integration','Countdown timers & urgency elements','Heatmap & analytics integration','Mobile-first, pixel-perfect'],
     tags: ['A/B ready', 'Fast load', 'Analytics', 'Lead capture'],
     from: '$499',
