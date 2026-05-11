@@ -1,83 +1,114 @@
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Neue+Haas+Grotesk+Display+Pro:wght@400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
 
 :root {
-  /* Default: Dark Mode */
-  --black: #0a0a0a;
-  --white: #f5f4f0;
-  --accent: #16eccf;
-  --gray: #888;
-  --border: rgba(255, 255, 255, 0.08);
+  --ink: #0c0c0b;
+  --paper: #f4f1ea;
+  --cream: #e8e4d9;
+  --accent: #c8ff00;
+  --accent2: #ff4d1c;
+  --muted: #6b6760;
+  --border: rgba(12,12,11,0.12);
+  --border-strong: rgba(12,12,11,0.25);
 
-  --bg-main: var(--black);
-  --text-main: var(--white);
+  --bg: var(--paper);
+  --fg: var(--ink);
+  --bg-card: rgba(255,255,255,0.6);
+  --bg-nav: rgba(244,241,234,0.85);
+
+  --font-display: 'Syne', sans-serif;
+  --font-serif: 'Instrument Serif', serif;
+  --font-body: 'DM Sans', sans-serif;
+
+  --r-sm: 8px;
+  --r-md: 16px;
+  --r-lg: 24px;
+  --r-full: 9999px;
 }
 
-/* White Mode Class */
-[data-theme='light'] {
-  --black: #0a0a0a;
-  --white: #ffffff;
-  --accent: #07c5bc; /* Sedikit lebih kontras */
-  --gray: #555;
-  --border: rgba(0, 0, 0, 0.1);
+[data-theme='dark'] {
+  --ink: #f4f1ea;
+  --paper: #0c0c0b;
+  --cream: #1a1a18;
+  --accent: #c8ff00;
+  --accent2: #ff4d1c;
+  --muted: #8a8780;
+  --border: rgba(244,241,234,0.1);
+  --border-strong: rgba(244,241,234,0.2);
 
-  --bg-main: var(--white);
-  --text-main: var(--black);
+  --bg: var(--paper);
+  --fg: var(--ink);
+  --bg-card: rgba(26,26,24,0.8);
+  --bg-nav: rgba(12,12,11,0.85);
 }
 
 *, *::before, *::after {
-  margin: 0;
-  padding: 0;
+  margin: 0; padding: 0;
   box-sizing: border-box;
 }
 
+html { scroll-behavior: smooth; }
+
 body {
-  background: var(--bg-main);
-  color: var(--text-main);
-  font-family: 'DM Sans', sans-serif;
-  transition: background 0.4s ease, color 0.4s ease; /* Transisi halus */
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  transition: background 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
 }
 
-/* Tambahan agar link & border juga ikut berubah warnanya */
 a { color: inherit; text-decoration: none; }
-.border-theme { border: 1px solid var(--border); }
+img { max-width: 100%; height: auto; }
 
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--muted); border-radius: 3px; }
+
+/* Selection */
+::selection { background: var(--accent); color: var(--ink); }
+
+/* Animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 @keyframes marquee {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
-/* Styling Tombol Theme Toggle */
-.theme-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 42px;
-  height: 42px;
-  border-radius: 9999px;
-  border: 1px solid var(--border);
-  background: transparent;
-  color: var(--text-main);
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s ease;
+@keyframes pulse-border {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(200,255,0,0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(200,255,0,0); }
 }
 
-.theme-toggle:hover {
-  background-color: var(--accent);
-  color: var(--black); /* Berubah jadi hitam saat hover agar kontras */
-  border-color: var(--accent);
+.animate-up {
+  animation: fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) forwards;
 }
 
-.theme-toggle:active {
-  transform: scale(0.92);
+/* Section spacing */
+.section-pad {
+  padding: 120px 0;
 }
 
-/* Animasi Ikon */
-.theme-toggle svg {
-  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+@media (max-width: 768px) {
+  .container { padding: 0 20px; }
+  .section-pad { padding: 80px 0; }
 }

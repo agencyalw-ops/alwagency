@@ -1,13 +1,13 @@
 "use client";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import Hero from "@/components/content/Hero";
 import Marquee from "@/components/Marquee";
-import Portfolio from "@/components/content/portfolio";
-import Services from "@/components/Services";
-import Process from "@/components/Process";
-import Pricing from "@/components/Pricing";
-import Contact from "@/components/content/Contact";
-import Footer from "@/components/Footer";
+import ServicesHome from "@/components/content/ServicesHome";
+import PortfolioHome from "@/components/content/PortfolioHome";
+import ProcessHome from "@/components/content/ProcessHome";
+import PricingHome from "@/components/content/PricingHome";
+import ContactHome from "@/components/content/ContactHome";
 
 export default function HomeClient() {
   return (
@@ -16,11 +16,11 @@ export default function HomeClient() {
       <main>
         <Hero />
         <Marquee />
-        <Services />
-        <Portfolio />
-        <Process />
-        <Pricing />
-        <Contact />
+        <ServicesHome />
+        <PortfolioHome />
+        <ProcessHome />
+        <PricingHome />
+        <ContactHome />
       </main>
       <Footer />
     </>
