@@ -153,3 +153,19 @@
     font-size: 0.75rem;
   }
 }
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 1rem;
+}
+
+.tag {
+  font-size: 0.65rem;
+  padding: 0.2rem 0.55rem;
+  border: 1px solid var(--border);
+  color: var(--gray);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-radius: 2px;
+}

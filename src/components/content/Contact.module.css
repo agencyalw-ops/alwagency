@@ -170,3 +170,13 @@
     padding: 4rem 1.5rem;
   }
 }
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 600px) {
+  .formRow { grid-template-columns: 1fr; }
+}

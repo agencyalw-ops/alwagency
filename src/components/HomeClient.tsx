@@ -2,25 +2,27 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/content/Hero";
 import Marquee from "@/components/Marquee";
+import Portfolio from "@/components/content/portfolio";
 import Services from "@/components/Services";
 import Process from "@/components/Process";
+import Pricing from "@/components/Pricing";
 import Contact from "@/components/content/Contact";
 import Footer from "@/components/Footer";
-import Portfolio from "@/components/content/portfolio";
 
 export default function HomeClient() {
   return (
     <>
-      <Navbar /> {/* ← tidak perlu setPage lagi */}
+      <Navbar />
       <main>
         <Hero />
         <Marquee />
-        <Portfolio />
         <Services />
+        <Portfolio />
         <Process />
+        <Pricing />
         <Contact />
       </main>
       <Footer />
     </>
-  )
+  );
 }

@@ -2,9 +2,11 @@ import styles from "./Marquee.module.css";
 
 const items = [
   "Web Development", "UI/UX Design", "Custom Software",
-  "E-commerce", "Company Profile", "Sistem Bisnis",
+  "E-Commerce", "Company Profile", "Business Systems",
+  "Landing Pages", "SaaS MVPs", "Digital Products",
   "Web Development", "UI/UX Design", "Custom Software",
-  "E-commerce", "Company Profile", "Sistem Bisnis",
+  "E-Commerce", "Company Profile", "Business Systems",
+  "Landing Pages", "SaaS MVPs", "Digital Products",
 ];
 
 export default function Marquee() {
@@ -13,7 +15,7 @@ export default function Marquee() {
       <div className={styles.track}>
         {items.map((item, i) => (
           <span key={i} className={i % 2 === 1 ? styles.dot : styles.item}>
-            {i % 2 === 1 ? "·" : item}
+            {i % 2 === 1 ? "✦" : item}
           </span>
         ))}
       </div>

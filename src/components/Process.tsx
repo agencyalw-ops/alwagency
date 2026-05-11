@@ -3,31 +3,31 @@ import styles from "./Process.module.css";
 const steps = [
   {
     num: "01",
-    title: "Diskusi & Brief",
-    desc: "Kami pahami kebutuhan, tujuan, dan target audiens proyek kamu secara mendalam.",
+    title: "Discovery & Brief",
+    desc: "We learn your business, goals, and target audience. One focused call — no lengthy questionnaires or wasted time.",
   },
   {
     num: "02",
-    title: "Desain & Prototype",
-    desc: "Tim kami merancang tampilan dan alur yang intuitif sebelum masuk ke pengembangan.",
+    title: "Design & Prototype",
+    desc: "We design the interface and user flow before writing a line of code. You approve before we build.",
   },
   {
     num: "03",
     title: "Development",
-    desc: "Kode yang bersih, cepat, dan scalable — dibangun dengan teknologi terkini.",
+    desc: "Clean, fast, scalable code — built with modern tech and tested across all devices and browsers.",
   },
   {
     num: "04",
     title: "Launch & Support",
-    desc: "Deploy, testing, dan kami tetap siap mendampingi setelah produk diluncurkan.",
+    desc: "We deploy, test thoroughly, and stay available after launch. Ongoing support for every client.",
   },
 ];
 
 export default function Process() {
   return (
     <section className={styles.section} id="process">
-      <div className={styles.label}>Cara Kerja Kami</div>
-      <h2 className={styles.title}>Proses sederhana,<br />hasil maksimal</h2>
+      <div className={styles.label}>How We Work</div>
+      <h2 className={styles.title}>Simple process,<br /><em>real results</em></h2>
       <div className={styles.steps}>
         {steps.map((step) => (
           <div key={step.num} className={styles.step}>

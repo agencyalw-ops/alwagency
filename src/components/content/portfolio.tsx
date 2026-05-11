@@ -14,7 +14,6 @@ interface PortfolioItem {
   link?: string
 }
 
-// Generate screenshot URL dari domain menggunakan microlink.io (gratis)
 const getScreenshotUrl = (siteUrl?: string) => {
   if (!siteUrl || siteUrl === "#") return null
   return `https://api.microlink.io/?url=${encodeURIComponent(siteUrl)}&screenshot=true&meta=false&embed=screenshot.url`
@@ -33,7 +32,7 @@ function Card({ title, description, imageUrl, linkUrl }: any) {
             src={finalImage}
             alt={title}
             className={style.image}
-            onError={() => setImgError(true)}  // fallback ke image asli jika screenshot gagal
+            onError={() => setImgError(true)}
           />
         ) : (
           <div className={style.imagePlaceholder}>No Preview</div>
@@ -44,7 +43,7 @@ function Card({ title, description, imageUrl, linkUrl }: any) {
         <p className={style.cardDescription}>{description}</p>
         {linkUrl && (
           <Link href={linkUrl} className={style.cardLink}>
-            Lihat Detail <span>&rarr;</span>
+            View Project <span>&rarr;</span>
           </Link>
         )}
       </div>
@@ -61,16 +60,7 @@ export default function Portfolio() {
     fetch("/api/portfolio")
       .then(res => res.json())
       .then(result => setData(result.portfolio))
-      .catch(() => {
-        setData([
-          { id: 1, title: "Marketplace Tiket Hiking", description: "Otomatisasi pembayaran dengan Midtrans Partner.", image: "", link: "https://tokopedia.com" },
-          { id: 2, title: "System Automation", description: "Laporan keuangan otomatis untuk UMKM.", image: "", link: "https://shopee.co.id" },
-          { id: 3, title: "Landing Page Premium", description: "Halaman arahan konversi tinggi untuk startup.", image: "", link: "https://gojek.com" },
-          { id: 4, title: "Dashboard Analytics", description: "Visualisasi data real-time untuk monitoring bisnis.", image: "", link: "https://bukalapak.com" },
-          { id: 5, title: "E-Commerce Platform", description: "Toko online lengkap dengan manajemen produk.", image: "", link: "https://lazada.co.id" },
-          { id: 6, title: "Mobile App UI", description: "Antarmuka aplikasi mobile layanan kesehatan.", image: "", link: "https://halodoc.com" },
-        ])
-      })
+      .catch(() => setData([]))
   }, [])
 
   useEffect(() => {
@@ -93,10 +83,12 @@ export default function Portfolio() {
     rows.push(visibleItems.slice(i, i + PER_PAGE))
   }
 
+  if (data.length === 0) return null
+
   return (
     <section className={style.portfolio} id="portfolio">
       <div className={style.container}>
-        <h2 className={style.sectionTitle}>Portfolio Agency Kami</h2>
+        <h2 className={style.sectionTitle}>Our Work</h2>
         <div className={style.grid}>
           {rows.map((row, rowIndex) => (
             <div
@@ -119,14 +111,14 @@ export default function Portfolio() {
         <div className={style.viewMoreContainer}>
           {hasMore ? (
             <button className={style.viewMoreBtn} onClick={handleLoadMore}>
-              Lihat Lebih Banyak
+              Load More
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M7 13l5 5 5-5M7 6l5 5 5-5" />
               </svg>
             </button>
           ) : data.length > PER_PAGE ? (
             <button className={style.viewMoreBtn} onClick={handleShowLess}>
-              Tampilkan Lebih Sedikit
+              Show Less
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M17 11l-5-5-5 5M17 18l-5-5-5 5" />
               </svg>
