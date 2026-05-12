@@ -60,7 +60,7 @@
 }
 .tag {
   background: var(--accent);
-  color: var(--ink);
+  color: var(--bg);
 }
 .tag2 {
   border: 1px solid var(--border-strong);

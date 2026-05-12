@@ -1,43 +1,40 @@
-/* Container Tombol */
-.theme-toggle {
+/* Icon-only button — zero border, zero background */
+.toggle {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.5rem;
-  width: 40px;
-  height: 40px;
-  border-radius: 9999px;
-  border: 1px solid var(--border);
-  background: transparent;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: none;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  border-radius: 50%;
   cursor: pointer;
-  transition: all 0.3s ease;
-  color: inherit;
-  position: relative;
-  overflow: hidden;
+  color: var(--muted);
+  transition: color 0.2s, transform 0.2s;
 }
 
-/* Hover Effect */
-.theme-toggle:hover {
-  background-color: var(--accent);
-  color: #000; /* Atau warna kontras lainnya */
-  border-color: var(--accent);
+.toggle:hover  { color: var(--fg); transform: scale(1.15); }
+.toggle:active { transform: scale(0.88); }
+.toggle:focus-visible {
+  outline: 2px solid var(--fg);
+  outline-offset: 3px;
 }
 
-/* Active State (Feedback saat diklik) */
-.theme-toggle:active {
-  transform: scale(0.9);
+/* Icons sit on top of each other */
+.icon {
+  position: absolute;
+  transition: opacity 0.25s ease, transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Styling Ikon */
-.theme-toggle svg {
-  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
-}
+.sun  { transform: rotate(0deg);   opacity: 1; }
+.moon { transform: rotate(-90deg); opacity: 0; }
 
-/* Animasi Rotasi Ikon (Opsional untuk mempercantik) */
-.theme-toggle[data-current-theme="dark"] svg {
-  transform: rotate(0deg);
-}
+/* Dark mode state */
+.toggle[data-current-theme="dark"] .sun  { transform: rotate(90deg);  opacity: 0; }
+.toggle[data-current-theme="dark"] .moon { transform: rotate(0deg);   opacity: 1; }
 
-.theme-toggle[data-current-theme="light"] svg {
-  transform: rotate(360deg);
-}
+/* Before mounted: hide icons to avoid flash */
+.hidden { opacity: 0 !important; }

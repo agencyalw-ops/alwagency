@@ -21,7 +21,7 @@
   border-color: var(--ink);
   transform: scale(1.03);
 }
-[data-theme='dark'] .featured { background: var(--accent); color: var(--ink); }
+[data-theme='dark'] .featured { background: var(--accent); color: var(--bg); }
 .featured:hover { transform: scale(1.03) translateY(-4px); }
 .badge {
   position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
@@ -29,7 +29,7 @@
   font-size: 0.65rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
   padding: 5px 14px; border-radius: var(--r-full);
 }
-[data-theme='dark'] .featured .badge { background: var(--ink); color: var(--accent); }
+[data-theme='dark'] .featured .badge { background: var(--ink); color: var(--bg); }
 .tier { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.5; margin-bottom: 8px; }
 .name { font-family: var(--font-display); font-size: 1.6rem; font-weight: 800; letter-spacing: -0.04em; margin-bottom: 16px; }
 .price { font-family: var(--font-display); font-size: 2.5rem; font-weight: 800; letter-spacing: -0.04em; margin-bottom: 4px; line-height: 1; }
