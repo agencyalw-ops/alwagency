@@ -1,11 +1,11 @@
 import styles from "./Marquee.module.css";
 
 const items = [
-  "Web Development", "✦", "UI/UX Design", "✦", "E-Commerce", "✦",
-  "Company Profile", "✦", "Business Systems", "✦", "Landing Pages", "✦",
-  "SaaS MVPs", "✦", "Digital Products", "✦", "Web Development", "✦",
-  "UI/UX Design", "✦", "E-Commerce", "✦", "Company Profile", "✦",
-  "Business Systems", "✦", "Landing Pages", "✦", "SaaS MVPs", "✦", "Digital Products", "✦",
+  "Next.js", "✦", "TypeScript", "✦", "React", "✦",
+  "Product UI", "✦", "Web Apps", "✦", "API Integrations", "✦",
+  "Database Systems", "✦", "Responsive Design", "✦", "Next.js", "✦",
+  "TypeScript", "✦", "React", "✦", "Product UI", "✦",
+  "Web Apps", "✦", "API Integrations", "✦", "Database Systems", "✦", "Responsive Design", "✦",
 ];
 
 export default function Marquee() {

@@ -50,10 +50,10 @@ export default function PortfolioHome() {
       <div className={styles.inner}>
         <div className={styles.header}>
           <div>
-            <p className={styles.label}>Our Work</p>
-            <h2 className={styles.title}>Selected <em>projects</em></h2>
+            <p className={styles.label}>Selected builds</p>
+            <h2 className={styles.title}>A few things<br /><em>I&apos;ve shipped.</em></h2>
           </div>
-          <Link href="/portfolio" className={styles.viewAll}>View all projects →</Link>
+          <Link href="/portfolio" className={styles.viewAll}>See the full archive →</Link>
         </div>
         <div className={styles.grid}>
           {data.map(item => <Card key={item.id} item={item} />)}

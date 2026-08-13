@@ -20,11 +20,10 @@ export default function ContactHome() {
     <section className={styles.section} id="contact">
       <div className={styles.inner}>
         <div className={styles.left}>
-          <p className={styles.label}>Start a Project</p>
-          <h2 className={styles.title}>Let's build<br /><em>something great</em></h2>
+          <p className={styles.label}>Have a build in mind?</p>
+          <h2 className={styles.title}>Bring the idea.<br /><em>I&apos;ll ship the first version.</em></h2>
           <p className={styles.sub}>
-            Tell us about your project. We'll get back to you within 24 hours
-            with honest advice — whether or not we're the right fit.
+            Share the problem, the product, or even the rough idea. I&apos;ll come back with a practical next step and an honest view of what it takes to build.
           </p>
           <div className={styles.contacts}>
             <a href="https://wa.me/6285716275034" target="_blank" rel="noopener noreferrer" className={styles.contact}>
@@ -82,11 +81,11 @@ export default function ContactHome() {
                   <label>Service needed</label>
                   <select value={form.service} onChange={e => setForm({...form, service: e.target.value})}>
                     <option value="">Select a service</option>
-                    <option>Company Profile Website</option>
-                    <option>E-Commerce Store</option>
-                    <option>Internal Business System</option>
-                    <option>Landing Page / Funnel</option>
-                    <option>SaaS MVP</option>
+                    <option>Marketing Website</option>
+                    <option>E-Commerce Build</option>
+                    <option>Custom Web App</option>
+                    <option>Product MVP</option>
+                    <option>API / Database Integration</option>
                     <option>Not sure yet</option>
                   </select>
                 </div>
@@ -102,12 +101,12 @@ export default function ContactHome() {
                 </div>
               </div>
               <div className={styles.field}>
-                <label>Tell us about your project</label>
-                <textarea rows={4} placeholder="What are you building? What problem does it solve? Any deadline?"
+                <label>What are you building?</label>
+                <textarea rows={4} placeholder="Tell me what you want to build, who it is for, and what success looks like."
                   value={form.message} onChange={e => setForm({...form, message: e.target.value})} required />
               </div>
               <button type="submit" className={styles.submit}>
-                Send via WhatsApp →
+                Send project brief via WhatsApp →
               </button>
             </form>
           )}

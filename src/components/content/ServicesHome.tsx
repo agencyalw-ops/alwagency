@@ -4,30 +4,30 @@ import styles from "./ServicesHome.module.css";
 const services = [
   {
     num: "01",
-    title: "Company Profile Website",
-    desc: "A professional digital home that builds trust instantly. Modern design, fast loading, mobile-first — built to make the right impression.",
-    tags: ["Next.js", "SEO-ready", "CMS", "Mobile-first"],
+    title: "Marketing Websites",
+    desc: "Fast, expressive websites that make your product easy to understand and impossible to ignore. Designed for trust, speed, and conversion.",
+    tags: ["Next.js", "TypeScript", "SEO", "Responsive UI"],
     href: "/services#company-profile",
   },
   {
     num: "02",
-    title: "E-Commerce & Online Store",
-    desc: "Full-featured online stores with product management, payment integration, and analytics. Built to convert visitors into customers.",
-    tags: ["Payment gateway", "Inventory", "Analytics", "Multi-currency"],
+    title: "E-Commerce Builds",
+    desc: "Conversion-ready stores with thoughtful product flows, checkout integrations, and admin tools that make day-to-day selling simpler.",
+    tags: ["Payments", "CMS", "Inventory", "Analytics"],
     href: "/services#ecommerce",
   },
   {
     num: "03",
-    title: "Internal Business Systems",
-    desc: "Custom web apps for your team — data management, reports, HR tools, inventory. Streamline operations with software built for your workflow.",
-    tags: ["Custom logic", "Role-based access", "Reporting", "API integrations"],
+    title: "Custom Web Apps",
+    desc: "Internal tools, dashboards, and business systems built around the way your team actually works — not around a generic template.",
+    tags: ["React", "Database", "Auth", "API"],
     href: "/services#systems",
   },
   {
     num: "04",
-    title: "Landing Page & Funnel",
-    desc: "High-converting pages for products, campaigns, or events. Every element is optimised for one goal: turning visitors into leads.",
-    tags: ["A/B ready", "Fast load", "Analytics", "Lead capture"],
+    title: "MVPs & Experiments",
+    desc: "Turn a product idea into a working first version quickly. We help you test the concept, learn from users, and build the next release.",
+    tags: ["Prototype", "Rapid build", "AI features", "Launch"],
     href: "/services#landing",
   },
 ];
@@ -37,9 +37,9 @@ export default function ServicesHome() {
     <section className={styles.section} id="services">
       <div className={styles.inner}>
         <div className={styles.header}>
-          <div className={styles.label}>Our Services</div>
-          <h2 className={styles.title}>What we <em>build</em><br />for you</h2>
-          <Link href="/services" className={styles.viewAll}>View all services →</Link>
+          <div className={styles.label}>What I build</div>
+          <h2 className={styles.title}>From first idea<br />to <em>shipped product.</em></h2>
+          <Link href="/services" className={styles.viewAll}>Explore capabilities →</Link>
         </div>
 
         <div className={styles.grid}>

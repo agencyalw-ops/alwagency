@@ -30,7 +30,7 @@ export default function Hero() {
       <div className={styles.inner}>
         <div className={styles.eyebrow}>
           <span className={styles.eyebrowRule} />
-          <span>Independent web agency for ambitious businesses</span>
+          <span>Designing and coding digital products for ambitious teams</span>
         </div>
 
         <h1 className={`${styles.heading} ${mounted ? styles.mounted : ""}`}>
@@ -41,9 +41,7 @@ export default function Hero() {
 
         <div className={styles.bottomGrid}>
           <p className={styles.sub}>
-            We turn sharp ideas into digital experiences with feeling — from
-            company profiles and e-commerce to custom systems that move your
-            business forward.
+            I turn sharp ideas into clear, useful digital products — from high-converting websites to custom web apps that move a business forward.
           </p>
 
           <div className={styles.actions}>
