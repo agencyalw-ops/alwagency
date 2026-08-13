@@ -171,7 +171,7 @@
   color: var(--bg-main);
   border-color: var(--accent);
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(200, 240, 96, 0.2);
+  box-shadow: 0 10px 25px rgba(216, 106, 67, 0.22);
 }
 
 /* ── Tablet (≤ 1200px) ── */

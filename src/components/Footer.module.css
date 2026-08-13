@@ -5,7 +5,7 @@
 }
 
 [data-theme='dark'] .footer {
-  background: #080807;
+  background: #123332;
 }
 
 .inner {
@@ -30,7 +30,7 @@
   letter-spacing: -0.04em;
   margin-bottom: 12px;
 }
-.logo span { color: #ff4d1c; }
+.logo span { color: var(--accent); }
 
 .tagline {
   font-size: 0.9rem;
