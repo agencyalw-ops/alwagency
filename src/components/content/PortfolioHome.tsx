@@ -1,7 +1,6 @@
 "use client"
 import { useEffect, useState } from "react"
 import Link from "next/link"
-import styles from "./PortfolioHome.module.css"
 
 interface Item { id: number; title: string; description: string; image: string; link?: string }
 
@@ -16,18 +15,18 @@ function Card({ item }: { item: Item }) {
   const src = ss && !imgErr ? ss : item.image
 
   return (
-    <div className={styles.card}>
-      <div className={styles.imgWrap}>
+    <div className="portfolio-home-card">
+      <div className="portfolio-home-img-wrap">
         {src ? (
-          <img src={src} alt={item.title} className={styles.img} onError={() => setImgErr(true)} />
+          <img src={src} alt={item.title} className="portfolio-home-img" onError={() => setImgErr(true)} />
         ) : (
-          <div className={styles.placeholder}>No Preview</div>
+          <div className="portfolio-home-placeholder">No Preview</div>
         )}
       </div>
-      <div className={styles.info}>
-        <h3 className={styles.cardTitle}>{item.title}</h3>
-        <p className={styles.cardDesc}>{item.description}</p>
-        {item.link && <a href={item.link} target="_blank" rel="noopener noreferrer" className={styles.cardLink}>View Live ↗</a>}
+      <div className="portfolio-home-info">
+        <h3 className="portfolio-home-card-title">{item.title}</h3>
+        <p className="portfolio-home-card-desc">{item.description}</p>
+        {item.link && <a href={item.link} target="_blank" rel="noopener noreferrer" className="portfolio-home-card-link">View Live ↗</a>}
       </div>
     </div>
   )
@@ -46,16 +45,16 @@ export default function PortfolioHome() {
   if (!data.length) return null
 
   return (
-    <section className={styles.section} id="portfolio">
-      <div className={styles.inner}>
-        <div className={styles.header}>
+    <section className="portfolio-home-section" id="portfolio">
+      <div className="portfolio-home-inner">
+        <div className="portfolio-home-header">
           <div>
-            <p className={styles.label}>Our Work</p>
-            <h2 className={styles.title}>Selected <em>projects</em></h2>
+            <p className="portfolio-home-label">Our Work</p>
+            <h2 className="portfolio-home-title">Selected <em>projects</em></h2>
           </div>
-          <Link href="/portfolio" className={styles.viewAll}>View all projects →</Link>
+          <Link href="/portfolio" className="portfolio-home-view-all">View all projects →</Link>
         </div>
-        <div className={styles.grid}>
+        <div className="portfolio-home-grid">
           {data.map(item => <Card key={item.id} item={item} />)}
         </div>
       </div>

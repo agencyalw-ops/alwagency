@@ -1,6 +1,5 @@
 "use client"
 import { useEffect, useState } from "react"
-import styles from "./PortfolioFull.module.css"
 
 interface Item { id: number; title: string; description: string; image: string; link?: string }
 
@@ -15,24 +14,24 @@ function Card({ item }: { item: Item }) {
   const src = ss && !imgErr ? ss : item.image
 
   return (
-    <div className={styles.card}>
-      <div className={styles.imgWrap}>
+    <div className="portfolio-full-card">
+      <div className="portfolio-full-img-wrap">
         {src ? (
-          <img src={src} alt={item.title} className={styles.img} onError={() => setImgErr(true)} />
+          <img src={src} alt={item.title} className="portfolio-full-img" onError={() => setImgErr(true)} />
         ) : (
-          <div className={styles.placeholder}>
+          <div className="portfolio-full-placeholder">
             <span>{item.title[0]}</span>
           </div>
         )}
         {item.link && (
-          <a href={item.link} target="_blank" rel="noopener noreferrer" className={styles.overlay}>
+          <a href={item.link} target="_blank" rel="noopener noreferrer" className="portfolio-full-overlay">
             <span>View Live ↗</span>
           </a>
         )}
       </div>
-      <div className={styles.info}>
-        <h3 className={styles.title}>{item.title}</h3>
-        <p className={styles.desc}>{item.description}</p>
+      <div className="portfolio-full-info">
+        <h3 className="portfolio-full-title">{item.title}</h3>
+        <p className="portfolio-full-desc">{item.description}</p>
       </div>
     </div>
   )
@@ -51,25 +50,25 @@ export default function PortfolioFull() {
 
   return (
     <>
-      <section className={styles.hero}>
-        <div className={styles.inner}>
-          <p className={styles.label}>Our Work</p>
-          <h1 className={styles.heading}>Selected <em>projects</em></h1>
-          <p className={styles.sub}>
+      <section className="portfolio-full-hero">
+        <div className="portfolio-full-inner">
+          <p className="portfolio-full-label">Our Work</p>
+          <h1 className="portfolio-full-heading">Selected <em>projects</em></h1>
+          <p className="portfolio-full-sub">
             A selection of websites and digital products we've built for
             businesses across Indonesia and worldwide.
           </p>
         </div>
       </section>
 
-      <section className={styles.grid_section}>
-        <div className={styles.inner}>
+      <section className="portfolio-full-grid-section">
+        <div className="portfolio-full-inner">
           {loading ? (
-            <div className={styles.loading}>Loading projects...</div>
+            <div className="portfolio-full-loading">Loading projects...</div>
           ) : data.length === 0 ? (
-            <div className={styles.empty}>Projects coming soon. <a href="/contact">Get in touch</a> to be our next case study.</div>
+            <div className="portfolio-full-empty">Projects coming soon. <a href="/contact">Get in touch</a> to be our next case study.</div>
           ) : (
-            <div className={styles.grid}>
+            <div className="portfolio-full-grid">
               {data.map(item => <Card key={item.id} item={item} />)}
             </div>
           )}

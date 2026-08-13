@@ -1,6 +1,6 @@
 
 import type { Metadata } from 'next'
-import "./globals.css";
+import "@/css/app.css";
 export const metadata: Metadata = {
   metadataBase: new URL('https://alwgen.com'),
   title: {

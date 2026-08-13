@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { Sun, Moon } from "lucide-react";
-import styles from "./Theme.module.css";
 
 export default function ThemeToggle() {
   const [theme, setTheme] = useState("light");
@@ -25,17 +24,17 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={mounted ? toggleTheme : undefined}
-      className={styles.toggle}
+      className="theme-toggle"
       data-current-theme={mounted ? theme : "light"}
       aria-label="Toggle Theme"
     >
       <Sun
-        className={`${styles.icon} ${styles.sun} ${mounted && theme === "dark" ? styles.hidden : ""}`}
+        className={`theme-toggle-icon theme-toggle-sun ${mounted && theme === "dark" ? "theme-toggle-hidden" : ""}`}
         size={18}
         strokeWidth={2}
       />
       <Moon
-        className={`${styles.icon} ${styles.moon} ${mounted && theme === "light" ? styles.hidden : ""}`}
+        className={`theme-toggle-icon theme-toggle-moon ${mounted && theme === "light" ? "theme-toggle-hidden" : ""}`}
         size={18}
         strokeWidth={2}
       />

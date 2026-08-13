@@ -1,5 +1,4 @@
 import Link from "next/link";
-import styles from "./ServicesHome.module.css";
 
 const services = [
   {
@@ -34,24 +33,24 @@ const services = [
 
 export default function ServicesHome() {
   return (
-    <section className={styles.section} id="services">
-      <div className={styles.inner}>
-        <div className={styles.header}>
-          <div className={styles.label}>Our Services</div>
-          <h2 className={styles.title}>What we <em>build</em><br />for you</h2>
-          <Link href="/services" className={styles.viewAll}>View all services →</Link>
+    <section className="services-home-section" id="services">
+      <div className="services-home-inner">
+        <div className="services-home-header">
+          <div className="services-home-label">Our Services</div>
+          <h2 className="services-home-title">What we <em>build</em><br />for you</h2>
+          <Link href="/services" className="services-home-view-all">View all services →</Link>
         </div>
 
-        <div className={styles.grid}>
+        <div className="services-home-grid">
           {services.map((s) => (
-            <Link key={s.num} href={s.href} className={styles.card}>
-              <div className={styles.cardTop}>
-                <span className={styles.num}>{s.num}</span>
-                <span className={styles.arrow}>↗</span>
+            <Link key={s.num} href={s.href} className="services-home-card">
+              <div className="services-home-card-top">
+                <span className="services-home-num">{s.num}</span>
+                <span className="services-home-arrow">↗</span>
               </div>
-              <h3 className={styles.cardTitle}>{s.title}</h3>
-              <p className={styles.cardDesc}>{s.desc}</p>
-              <div className={styles.tags}>
+              <h3 className="services-home-card-title">{s.title}</h3>
+              <p className="services-home-card-desc">{s.desc}</p>
+              <div className="services-home-tags">
                 {s.tags.map(t => <span key={t}>{t}</span>)}
               </div>
             </Link>

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import styles from "./PricingHome.module.css";
 
 const plans = [
   {
@@ -24,29 +23,29 @@ const plans = [
 
 export default function PricingHome() {
   return (
-    <section className={styles.section} id="pricing">
-      <div className={styles.inner}>
-        <div className={styles.header}>
-          <p className={styles.label}>Pricing</p>
-          <h2 className={styles.title}>Honest pricing,<br /><em>no surprises</em></h2>
-          <p className={styles.sub}>
+    <section className="pricing-home-section" id="pricing">
+      <div className="pricing-home-inner">
+        <div className="pricing-home-header">
+          <p className="pricing-home-label">Pricing</p>
+          <h2 className="pricing-home-title">Honest pricing,<br /><em>no surprises</em></h2>
+          <p className="pricing-home-sub">
             Fixed packages for the most common needs. Not sure which fits?{" "}
             <Link href="/contact">Tell us about your project</Link> and we'll advise honestly.
           </p>
         </div>
 
-        <div className={styles.grid}>
+        <div className="pricing-home-grid">
           {plans.map(plan => (
-            <div key={plan.name} className={`${styles.card} ${plan.featured ? styles.featured : ""}`}>
-              {plan.featured && <div className={styles.badge}>Most Popular</div>}
-              <div className={styles.tier}>{plan.tier}</div>
-              <div className={styles.name}>{plan.name}</div>
-              <div className={styles.price}>{plan.price} <span>/ {plan.per}</span></div>
-              <p className={styles.desc}>{plan.desc}</p>
-              <ul className={styles.features}>
-                {plan.features.map(f => <li key={f}><span className={styles.check}>✓</span>{f}</li>)}
+            <div key={plan.name} className={`pricing-home-card ${plan.featured ? "pricing-home-featured" : ""}`}>
+              {plan.featured && <div className="pricing-home-badge">Most Popular</div>}
+              <div className="pricing-home-tier">{plan.tier}</div>
+              <div className="pricing-home-name">{plan.name}</div>
+              <div className="pricing-home-price">{plan.price} <span>/ {plan.per}</span></div>
+              <p className="pricing-home-desc">{plan.desc}</p>
+              <ul className="pricing-home-features">
+                {plan.features.map(f => <li key={f}><span className="pricing-home-check">✓</span>{f}</li>)}
               </ul>
-              <Link href="/contact" className={`${styles.btn} ${plan.featured ? styles.btnFeatured : ""}`}>
+              <Link href="/contact" className={`pricing-home-btn ${plan.featured ? "pricing-home-btn-featured" : ""}`}>
                 {plan.cta}
               </Link>
             </div>

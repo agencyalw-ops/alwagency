@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import ThemeToggle from "./ThemeTogle";
-import styles from "./Navbar.module.css";
 
 const navLinks = [
   { href: "/services", label: "Services" },
@@ -26,35 +25,35 @@ export default function Navbar() {
   useEffect(() => setMenuOpen(false), [pathname]);
 
   return (
-    <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ""}`}>
-      <div className={styles.inner}>
-        <Link href="/" className={styles.logo}>
-          alw<span className={styles.dot}>.</span>
+    <nav className={`nav-nav ${scrolled ? "nav-scrolled" : ""}`}>
+      <div className="nav-inner">
+        <Link href="/" className="nav-logo">
+          alw<span className="nav-dot">.</span>
         </Link>
 
-        <ul className={`${styles.links} ${menuOpen ? styles.open : ""}`}>
+        <ul className={`nav-links ${menuOpen ? "nav-open" : ""}`}>
           {navLinks.map(({ href, label }) => (
             <li key={href}>
               <Link
                 href={href}
-                className={`${styles.link} ${pathname === href ? styles.active : ""}`}
+                className={`nav-link ${pathname === href ? "nav-active" : ""}`}
               >
                 {label}
               </Link>
             </li>
           ))}
           <li>
-            <Link href="/contact" className={styles.cta}>
+            <Link href="/contact" className="nav-cta">
               Start a Project →
             </Link>
           </li>
           <li><ThemeToggle /></li>
         </ul>
 
-        <div className={styles.mobileRight}>
+        <div className="nav-mobile-right">
           <ThemeToggle />
           <button
-            className={`${styles.hamburger} ${menuOpen ? styles.isOpen : ""}`}
+            className={`nav-hamburger ${menuOpen ? "nav-is-open" : ""}`}
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
           >

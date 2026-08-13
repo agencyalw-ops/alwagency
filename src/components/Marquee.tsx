@@ -1,5 +1,3 @@
-import styles from "./Marquee.module.css";
-
 const items = [
   "Web Development", "✦", "UI/UX Design", "✦", "E-Commerce", "✦",
   "Company Profile", "✦", "Business Systems", "✦", "Landing Pages", "✦",
@@ -10,10 +8,10 @@ const items = [
 
 export default function Marquee() {
   return (
-    <div className={styles.wrap}>
-      <div className={styles.track}>
+    <div className="marquee-wrap">
+      <div className="marquee-track">
         {items.map((item, i) => (
-          <span key={i} className={item === "✦" ? styles.star : styles.item}>
+          <span key={i} className={item === "✦" ? "marquee-star" : "marquee-item"}>
             {item}
           </span>
         ))}
