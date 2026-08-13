@@ -28,9 +28,10 @@
   font-size: 1.6rem;
   font-weight: 800;
   letter-spacing: -0.03em;
-  color: var(--fg);
+  color: #f4eee0;
   line-height: 1;
 }
+.nav.scrolled .logo { color: var(--fg); }
 .dot { color: var(--accent2); }
 
 .links {
@@ -43,13 +44,18 @@
 .link {
   font-size: 0.875rem;
   font-weight: 500;
-  color: var(--muted);
+  color: rgba(244, 238, 224, .82);
   padding: 6px 14px;
   border-radius: var(--r-full);
   transition: all 0.2s;
   letter-spacing: 0.01em;
 }
 .link:hover, .link.active {
+  color: #f4eee0;
+  background: rgba(244, 238, 224, .14);
+}
+.nav.scrolled .link { color: var(--muted); }
+.nav.scrolled .link:hover, .nav.scrolled .link.active {
   color: var(--fg);
   background: var(--border);
 }
@@ -57,16 +63,16 @@
 .cta {
   font-size: 0.875rem;
   font-weight: 600;
-  background: var(--fg);
-  color: var(--bg);
+  background: #e9d7b5;
+  color: #1b3230;
   padding: 8px 20px;
   border-radius: var(--r-full);
   transition: all 0.2s;
   letter-spacing: 0.01em;
 }
 .cta:hover {
-  background: var(--accent);
-  color: var(--bg);
+  background: #d86a43;
+  color: #f8ecdb;
   transform: translateY(-1px);
 }
 
@@ -88,7 +94,7 @@
 .hamburger span {
   display: block;
   width: 24px; height: 2px;
-  background: var(--fg);
+  background: #f4eee0;
   border-radius: 2px;
   transition: all 0.3s ease;
   transform-origin: center;
