@@ -29,7 +29,7 @@
 .btn { display: block; text-align: center; border: 1px solid currentColor; padding: 12px 24px; border-radius: var(--r-full); font-size: 0.875rem; font-weight: 600; transition: all 0.2s; opacity: 0.8; }
 .btn:hover { opacity: 1; }
 .btnF { background: var(--accent); color: var(--bg); border-color: var(--accent); opacity: 1; }
-.btnF:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(200,255,0,0.3); }
+.btnF:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(209,56,42,0.3); }
 
 .faq { padding: 100px 0; }
 .faqTitle { font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 800; letter-spacing: -0.04em; margin-bottom: 60px; }

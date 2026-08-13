@@ -35,7 +35,7 @@
 [data-theme='dark'] .ctaTitle { color: var(--fg); }
 .ctaBtns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
 .ctaBtn { background: var(--accent); color: var(--bg); padding: 14px 36px; border-radius: var(--r-full); font-size: 0.95rem; font-weight: 700; transition: all 0.2s; }
-.ctaBtn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(200,255,0,0.3); }
+.ctaBtn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(209,56,42,0.3); }
 .ctaBtnOutline { border: 1px solid rgba(244,241,234,0.3); color: var(--paper); padding: 14px 36px; border-radius: var(--r-full); font-size: 0.95rem; font-weight: 600; transition: all 0.2s; }
 [data-theme='dark'] .ctaBtnOutline { border-color: var(--border-strong); color: var(--fg); }
 .ctaBtnOutline:hover { background: rgba(244,241,234,0.1); }
