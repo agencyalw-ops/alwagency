@@ -103,7 +103,7 @@
 
 .field input:focus,
 .field textarea:focus {
-  border-color: rgba(200, 240, 96, 0.4);
+  border-color: rgba(216, 106, 67, 0.48);
 }
 
 .submit {
@@ -141,7 +141,7 @@
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: rgba(200, 240, 96, 0.15);
+  background: rgba(216, 106, 67, 0.16);
   color: var(--accent);
   font-size: 1.5rem;
   display: flex;
