@@ -955,6 +955,9 @@ img { max-width: 100%; height: auto; }
 .contact-home-title em { font-family: var(--font-serif); font-style: italic; font-weight: 400; }
 .contact-home-sub { font-size: 0.95rem; color: var(--muted); line-height: 1.75; margin-bottom: 40px; }
 .contact-home-contacts { display: flex; flex-direction: column; gap: 16px; }
+.contact-home-faq-hint { font-size: 0.875rem; color: var(--muted); margin-top: 24px; }
+.contact-home-faq-hint a { color: var(--fg); font-weight: 600; border-bottom: 1px solid var(--border-strong); padding-bottom: 1px; }
+.contact-home-faq-hint a:hover { border-color: var(--fg); }
 .contact-home-contact { display: flex; align-items: center; gap: 16px; padding: 16px 20px; border-radius: var(--r-md); border: 1px solid var(--border); transition: all 0.2s; }
 .contact-home-contact:hover { border-color: var(--border-strong); transform: translateX(4px); }
 .contact-home-contact-icon { width: 40px; height: 40px; border-radius: 50%; background: var(--fg); color: var(--bg); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }

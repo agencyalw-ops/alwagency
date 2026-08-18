@@ -48,6 +48,9 @@ export default function ContactHome() {
               </div>
             </a>
           </div>
+          <p className="contact-home-faq-hint">
+            Have questions before reaching out? <Link href="/faq">Check the FAQ →</Link>
+          </p>
         </div>
 
         <div className="contact-home-form-wrap">

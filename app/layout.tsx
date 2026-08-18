@@ -117,35 +117,6 @@ const jsonLd = {
         ],
       },
     },
-    {
-      '@type': 'FAQPage',
-      mainEntity: [
-        {
-          '@type': 'Question',
-          name: 'How long does it take to build a website?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Most company profile websites take 1–2 weeks. E-commerce projects typically take 3–5 weeks. Custom business systems vary based on complexity.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'Do you work with international clients?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Yes. We work with SMBs globally. Our team communicates in English and handles all time zones via async collaboration.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'What is your pricing?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'We offer fixed-price packages starting from $499 for a professional company profile website, $1,200 for a full growth package, and custom pricing for e-commerce and complex systems.',
-          },
-        },
-      ],
-    },
   ],
 }
 
