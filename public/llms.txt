@@ -1,0 +1,37 @@
+# Alw Agency
+
+> Web development and digital solutions for small and medium businesses worldwide. We turn business ideas into professional digital products — fast, affordable, built to convert. Based in Wonosobo, Indonesia, serving clients globally.
+
+## Services
+- **Company Profile Website** — Professional home base that builds instant trust. Modern design, fast loading, mobile-first.
+- **E-Commerce & Online Store** — Full-featured online stores with product management, payment integration, and analytics.
+- **Internal Business Systems** — Custom web apps for teams: data management, approvals, HR tools, inventory. Software built around your workflow.
+- **Landing Page & Funnel** — High-converting pages for products, campaigns, or events, optimized for one clear goal: leads.
+- **SaaS MVP** — Turn a product idea into a working first version quickly.
+
+## Tech stack
+Next.js, React, TypeScript, Node.js, PostgreSQL, Prisma, Tailwind CSS, Vercel, Stripe, Figma.
+
+## Pricing
+- **Launch** — $499 starting point. A focused website build for a clear brief, a tight scope, and a fast route to launch.
+- **Growth** — $1,200 starting point (most popular). A deeper build for teams that need a distinctive digital presence and room to grow.
+- **Scale** — Custom, scoped project. For custom apps, MVPs, integrations, and products that need thoughtful engineering over time.
+
+## How we work
+Discovery & Brief → Design & Prototype → Development → Launch & Support. Most company profile websites take 1–2 weeks; e-commerce projects typically take 3–5 weeks; custom business systems vary based on complexity.
+
+## Contact
+- Email: agencyalw@gmail.com
+- WhatsApp: +62 857-1627-5034
+- Contact form: https://alwgen.com/contact
+- Instagram: https://www.instagram.com/alwgen/
+- LinkedIn: https://www.linkedin.com/in/alw-bruh-638311286/
+
+## Portfolio
+Selected projects on the homepage: https://alwgen.com/#portfolio
+Full archive: https://alwgen.com/portfolio
+
+## Other pages
+- About: https://alwgen.com/about
+- Services: https://alwgen.com/services
+- Pricing: https://alwgen.com/pricing
