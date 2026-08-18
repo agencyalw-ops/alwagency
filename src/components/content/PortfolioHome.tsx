@@ -1,24 +1,27 @@
 "use client"
 import { useEffect, useState } from "react"
+import Image from "next/image"
 import Link from "next/link"
 
 interface Item { id: number; title: string; description: string; image: string; link?: string }
 
-const getScreenshot = (url?: string) =>
-  url && url !== "#"
-    ? `https://api.microlink.io/?url=${encodeURIComponent(url)}&screenshot=true&meta=false&embed=screenshot.url`
-    : null
-
 function Card({ item }: { item: Item }) {
-  const [imgErr, setImgErr] = useState(false)
-  const ss = getScreenshot(item.link)
-  const src = ss && !imgErr ? ss : item.image
-
   return (
     <div className="portfolio-home-card">
       <div className="portfolio-home-img-wrap">
-        {src ? (
-          <img src={src} alt={item.title} className="portfolio-home-img" onError={() => setImgErr(true)} />
+        {item.image ? (
+          item.image.startsWith("/") ? (
+            <Image
+              src={item.image}
+              alt={item.title}
+              fill
+              sizes="(max-width: 700px) 100vw, 372px"
+              className="portfolio-home-img"
+            />
+          ) : (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={item.image} alt={item.title} className="portfolio-home-img" />
+          )
         ) : (
           <div className="portfolio-home-placeholder">No Preview</div>
         )}
@@ -26,7 +29,11 @@ function Card({ item }: { item: Item }) {
       <div className="portfolio-home-info">
         <h3 className="portfolio-home-card-title">{item.title}</h3>
         <p className="portfolio-home-card-desc">{item.description}</p>
-        {item.link && <a href={item.link} target="_blank" rel="noopener noreferrer" className="portfolio-home-card-link">View Live ↗</a>}
+        {item.link && (
+          <a href={item.link} target="_blank" rel="noopener noreferrer" className="portfolio-home-card-link" aria-label={`View live: ${item.title}`}>
+            View Live ↗
+          </a>
+        )}
       </div>
     </div>
   )
@@ -49,17 +56,10 @@ export default function PortfolioHome() {
       <div className="portfolio-home-inner">
         <div className="portfolio-home-header">
           <div>
-<<<<<<< HEAD
             <p className="portfolio-home-label">Our Work</p>
             <h2 className="portfolio-home-title">Selected <em>projects</em></h2>
           </div>
           <Link href="/portfolio" className="portfolio-home-view-all">View all projects →</Link>
-=======
-            <p className={styles.label}>Selected builds</p>
-            <h2 className={styles.title}>A few things<br /><em>I&apos;ve shipped.</em></h2>
-          </div>
-          <Link href="/portfolio" className={styles.viewAll}>See the full archive →</Link>
->>>>>>> 9326dec1c478ed71aa8cf2e11d1c4848a596a9a6
         </div>
         <div className="portfolio-home-grid">
           {data.map(item => <Card key={item.id} item={item} />)}

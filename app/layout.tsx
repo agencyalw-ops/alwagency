@@ -1,6 +1,28 @@
 
 import type { Metadata } from 'next'
+import { Bodoni_Moda, Playball, DM_Sans } from 'next/font/google'
 import "@/css/app.css";
+
+const bodoniModa = Bodoni_Moda({
+  subsets: ['latin'],
+  weight: ['700', '800'],
+  variable: '--font-bodoni',
+  display: 'swap',
+})
+
+const playball = Playball({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-playball',
+  display: 'swap',
+})
+
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-dmsans',
+  display: 'swap',
+})
 export const metadata: Metadata = {
   metadataBase: new URL('https://alwgen.com'),
   title: {
@@ -129,14 +151,12 @@ const jsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${bodoniModa.variable} ${playball.variable} ${dmSans.variable}`}>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body>{children}</body>
     </html>

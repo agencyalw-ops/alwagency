@@ -23,7 +23,6 @@ const plans = [
 
 export default function PricingHome() {
   return (
-<<<<<<< HEAD
     <section className="pricing-home-section" id="pricing">
       <div className="pricing-home-inner">
         <div className="pricing-home-header">
@@ -32,13 +31,6 @@ export default function PricingHome() {
           <p className="pricing-home-sub">
             Fixed packages for the most common needs. Not sure which fits?{" "}
             <Link href="/contact">Tell us about your project</Link> and we'll advise honestly.
-=======
-    <section className={styles.section} id="pricing">
-      <div className={styles.inner}>
-        <div className={styles.header}>
-          <p className={styles.label}>Ways to work together</p>
-          <h2 className={styles.title}>Clear scope,<br /><em>no mystery.</em></h2>
-          <p className={styles.sub}>
           </p>
         </div>
 

@@ -61,25 +61,25 @@ export default function ContactHome() {
             <form className="contact-home-form" onSubmit={handleSubmit}>
               <div className="contact-home-row">
                 <div className="contact-home-field">
-                  <label>Your name</label>
-                  <input type="text" placeholder="Jane Smith" value={form.name}
+                  <label htmlFor="ch-name">Your name</label>
+                  <input id="ch-name" type="text" placeholder="Jane Smith" value={form.name}
                     onChange={e => setForm({...form, name: e.target.value})} required />
                 </div>
                 <div className="contact-home-field">
-                  <label>Email address</label>
-                  <input type="email" placeholder="jane@company.com" value={form.email}
+                  <label htmlFor="ch-email">Email address</label>
+                  <input id="ch-email" type="email" placeholder="jane@company.com" value={form.email}
                     onChange={e => setForm({...form, email: e.target.value})} required />
                 </div>
               </div>
               <div className="contact-home-field">
-                <label>Company / business name</label>
-                <input type="text" placeholder="Acme Co." value={form.company}
+                <label htmlFor="ch-company">Company / business name</label>
+                <input id="ch-company" type="text" placeholder="Acme Co." value={form.company}
                   onChange={e => setForm({...form, company: e.target.value})} />
               </div>
               <div className="contact-home-row">
                 <div className="contact-home-field">
-                  <label>Service needed</label>
-                  <select value={form.service} onChange={e => setForm({...form, service: e.target.value})}>
+                  <label htmlFor="ch-service">Service needed</label>
+                  <select id="ch-service" value={form.service} onChange={e => setForm({...form, service: e.target.value})}>
                     <option value="">Select a service</option>
                     <option>Company Profile Website</option>
                     <option>E-Commerce Store</option>
@@ -90,8 +90,8 @@ export default function ContactHome() {
                   </select>
                 </div>
                 <div className="contact-home-field">
-                  <label>Budget range</label>
-                  <select value={form.budget} onChange={e => setForm({...form, budget: e.target.value})}>
+                  <label htmlFor="ch-budget">Budget range</label>
+                  <select id="ch-budget" value={form.budget} onChange={e => setForm({...form, budget: e.target.value})}>
                     <option value="">Select budget</option>
                     <option>Under $500</option>
                     <option>$500 – $1,500</option>
@@ -101,8 +101,8 @@ export default function ContactHome() {
                 </div>
               </div>
               <div className="contact-home-field">
-                <label>Tell us about your project</label>
-                <textarea rows={4} placeholder="What are you building? What problem does it solve? Any deadline?"
+                <label htmlFor="ch-message">Tell us about your project</label>
+                <textarea id="ch-message" rows={4} placeholder="What are you building? What problem does it solve? Any deadline?"
                   value={form.message} onChange={e => setForm({...form, message: e.target.value})} required />
               </div>
               <button type="submit" className="contact-home-submit">

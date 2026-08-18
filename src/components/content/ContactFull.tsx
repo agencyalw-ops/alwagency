@@ -90,25 +90,25 @@ export default function ContactFull() {
                 <form className="contact-full-form" onSubmit={handleSubmit}>
                   <div className="contact-full-row">
                     <div className="contact-full-field">
-                      <label>Your name *</label>
-                      <input type="text" placeholder="Jane Smith" value={form.name}
+                      <label htmlFor="cf-name">Your name *</label>
+                      <input id="cf-name" type="text" placeholder="Jane Smith" value={form.name}
                         onChange={e => setForm({...form, name: e.target.value})} required />
                     </div>
                     <div className="contact-full-field">
-                      <label>Email address *</label>
-                      <input type="email" placeholder="jane@company.com" value={form.email}
+                      <label htmlFor="cf-email">Email address *</label>
+                      <input id="cf-email" type="email" placeholder="jane@company.com" value={form.email}
                         onChange={e => setForm({...form, email: e.target.value})} required />
                     </div>
                   </div>
                   <div className="contact-full-field">
-                    <label>Company / business name</label>
-                    <input type="text" placeholder="Acme Co." value={form.company}
+                    <label htmlFor="cf-company">Company / business name</label>
+                    <input id="cf-company" type="text" placeholder="Acme Co." value={form.company}
                       onChange={e => setForm({...form, company: e.target.value})} />
                   </div>
                   <div className="contact-full-row">
                     <div className="contact-full-field">
-                      <label>Service needed</label>
-                      <select value={form.service} onChange={e => setForm({...form, service: e.target.value})}>
+                      <label htmlFor="cf-service">Service needed</label>
+                      <select id="cf-service" value={form.service} onChange={e => setForm({...form, service: e.target.value})}>
                         <option value="">Select a service</option>
                         <option>Company Profile Website</option>
                         <option>E-Commerce Store</option>
@@ -119,8 +119,8 @@ export default function ContactFull() {
                       </select>
                     </div>
                     <div className="contact-full-field">
-                      <label>Budget range</label>
-                      <select value={form.budget} onChange={e => setForm({...form, budget: e.target.value})}>
+                      <label htmlFor="cf-budget">Budget range</label>
+                      <select id="cf-budget" value={form.budget} onChange={e => setForm({...form, budget: e.target.value})}>
                         <option value="">Select budget</option>
                         <option>Under $500</option>
                         <option>$500 – $1,500</option>
@@ -130,8 +130,8 @@ export default function ContactFull() {
                     </div>
                   </div>
                   <div className="contact-full-field">
-                    <label>Tell us about your project *</label>
-                    <textarea rows={5} placeholder="What are you building? What problem does it solve? Any deadline?"
+                    <label htmlFor="cf-message">Tell us about your project *</label>
+                    <textarea id="cf-message" rows={5} placeholder="What are you building? What problem does it solve? Any deadline?"
                       value={form.message} onChange={e => setForm({...form, message: e.target.value})} required />
                   </div>
                   <button type="submit" className="contact-full-submit">Send via WhatsApp →</button>

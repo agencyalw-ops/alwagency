@@ -7,19 +7,11 @@ const steps = [
 
 export default function ProcessHome() {
   return (
-<<<<<<< HEAD
     <section className="process-home-section" id="process">
       <div className="process-home-inner">
         <div className="process-home-header">
           <p className="process-home-label">How We Work</p>
           <h2 className="process-home-title">Simple process,<br /><em>real results</em></h2>
-=======
-    <section className={styles.section} id="process">
-      <div className={styles.inner}>
-        <div className={styles.header}>
-          <p className={styles.label}>The build process</p>
-          <h2 className={styles.title}>Thoughtful work,<br /><em>shipped clearly.</em></h2>
->>>>>>> 9326dec1c478ed71aa8cf2e11d1c4848a596a9a6
         </div>
         <div className="process-home-steps">
           {steps.map((s, i) => (

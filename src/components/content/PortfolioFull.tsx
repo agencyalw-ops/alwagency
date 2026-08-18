@@ -1,30 +1,33 @@
 "use client"
 import { useEffect, useState } from "react"
+import Image from "next/image"
 
 interface Item { id: number; title: string; description: string; image: string; link?: string }
 
-const getScreenshot = (url?: string) =>
-  url && url !== "#"
-    ? `https://api.microlink.io/?url=${encodeURIComponent(url)}&screenshot=true&meta=false&embed=screenshot.url`
-    : null
-
 function Card({ item }: { item: Item }) {
-  const [imgErr, setImgErr] = useState(false)
-  const ss = getScreenshot(item.link)
-  const src = ss && !imgErr ? ss : item.image
-
   return (
     <div className="portfolio-full-card">
       <div className="portfolio-full-img-wrap">
-        {src ? (
-          <img src={src} alt={item.title} className="portfolio-full-img" onError={() => setImgErr(true)} />
+        {item.image ? (
+          item.image.startsWith("/") ? (
+            <Image
+              src={item.image}
+              alt={item.title}
+              fill
+              sizes="(max-width: 900px) 100vw, 33vw"
+              className="portfolio-full-img"
+            />
+          ) : (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={item.image} alt={item.title} className="portfolio-full-img" />
+          )
         ) : (
           <div className="portfolio-full-placeholder">
             <span>{item.title[0]}</span>
           </div>
         )}
         {item.link && (
-          <a href={item.link} target="_blank" rel="noopener noreferrer" className="portfolio-full-overlay">
+          <a href={item.link} target="_blank" rel="noopener noreferrer" className="portfolio-full-overlay" aria-label={`View live: ${item.title}`}>
             <span>View Live ↗</span>
           </a>
         )}
