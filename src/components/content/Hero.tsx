@@ -1,9 +1,9 @@
 import Link from "next/link"
 
 const cards = [
-  { title: "Kopi Kledang", big: true, image: "/portfolio/caffe.webp" },
-  { title: "Combucha Tea", big: false, image: "/portfolio/combucha-tea.webp" },
-  { title: "Bold Blue Photography", big: false, image: "/portfolio/bold-blue-photography.webp" },
+  { title: "Pedes Terserah", big: true, image: "/portfolio/pedes-terserah.webp", link: "https://pedesterserah.vercel.app/" },
+  { title: "Gendewo", big: false, image: "/portfolio/gendewo.webp", link: "https://gendewo-sigma.vercel.app/" },
+  { title: "ALW Studio", big: false, image: "/portfolio/alw-studio.webp", link: "https://alwctudio.vercel.app" },
 ]
 
 export default function Hero() {
@@ -30,9 +30,13 @@ export default function Hero() {
         <div className="hero-fan-wrap">
           <div className="hero-fan">
             {cards.map((c, i) => (
-              <div
+              <a
                 key={c.title}
                 title={c.title}
+                href={c.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`View live: ${c.title}`}
                 className={`hero-fan-card hero-fan-card-${i}${c.big ? " hero-fan-card-big" : ""}`}
                 style={{ backgroundImage: `url('${c.image}')` }}
               />

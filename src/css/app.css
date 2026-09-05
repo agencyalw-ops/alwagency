@@ -527,6 +527,7 @@ img { max-width: 100%; height: auto; }
 }
 .hero-fan-card {
   position: relative;
+  display: block;
   width: 300px; height: 175px;
   margin: 0 -18px;
   border-radius: var(--r-lg);
@@ -539,7 +540,7 @@ img { max-width: 100%; height: auto; }
   transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 .hero-fan-card:hover { box-shadow: 0 26px 50px rgba(0, 0, 0, 0.28); }
-.hero-fan-card-big { width: 190px; height: 340px; }
+.hero-fan-card-big { width: 300px; height: 175px; }
 .hero-fan-card-0 { transform: translateY(-24.87px) rotate(-13.5deg); }
 .hero-fan-card-1 { transform: translateY(-2.78px) rotate(-4.5deg); }
 .hero-fan-card-2 { transform: translateY(-2.78px) rotate(4.5deg); }
@@ -952,5 +953,7 @@ img { max-width: 100%; height: auto; }
 .portfolio-full-desc { font-size: 0.875rem; color: var(--muted); line-height: 1.6; }
 .portfolio-full-loading, .portfolio-full-empty { text-align: center; padding: 80px; color: var(--muted); font-size: 1rem; }
 .portfolio-full-empty a { color: var(--fg); font-weight: 500; text-decoration: underline; }
+.portfolio-full-load-more { display: flex; justify-content: center; margin-top: 48px; }
+.portfolio-full-load-more { min-height: 24px; color: var(--muted); font-size: 0.875rem; }
 @media (max-width: 900px) { .portfolio-full-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 600px) { .portfolio-full-inner { padding: 0 20px; } .portfolio-full-grid { grid-template-columns: 1fr; } }

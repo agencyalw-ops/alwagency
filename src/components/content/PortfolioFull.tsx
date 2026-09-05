@@ -1,8 +1,15 @@
 "use client"
 import { useEffect, useState } from "react"
+import { useRef } from "react"
 import Image from "next/image"
 
 interface Item { id: number; title: string; description: string; image: string; link?: string }
+
+async function fetchPortfolioPage(offset: number) {
+  const response = await fetch(`/api/portfolio?limit=1&offset=${offset}`)
+  if (!response.ok) throw new Error("Failed to fetch portfolio")
+  return response.json()
+}
 
 function Card({ item }: { item: Item }) {
   return (
@@ -43,13 +50,36 @@ function Card({ item }: { item: Item }) {
 export default function PortfolioFull() {
   const [data, setData] = useState<Item[]>([])
   const [loading, setLoading] = useState(true)
+  const [loadingMore, setLoadingMore] = useState(false)
+  const [hasMore, setHasMore] = useState(false)
+  const loadMoreRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    fetch("/api/portfolio")
-      .then(r => r.json())
-      .then(d => { setData(d.portfolio || []); setLoading(false); })
+    fetchPortfolioPage(0)
+      .then(d => { setData(d.portfolio || []); setHasMore(Boolean(d.hasMore)); setLoading(false); })
       .catch(() => { setData([]); setLoading(false); })
   }, [])
+
+  useEffect(() => {
+    const loadMore = loadMoreRef.current
+    if (!loadMore || !hasMore || loadingMore) return
+
+    const observer = new IntersectionObserver(async ([entry]) => {
+      if (!entry.isIntersecting) return
+
+      setLoadingMore(true)
+      try {
+        const result = await fetchPortfolioPage(data.length)
+        setData(current => [...current, ...(result.portfolio || [])])
+        setHasMore(Boolean(result.hasMore))
+      } finally {
+        setLoadingMore(false)
+      }
+    }, { rootMargin: "320px" })
+
+    observer.observe(loadMore)
+    return () => observer.disconnect()
+  }, [data.length, hasMore, loadingMore])
 
   return (
     <>
@@ -71,9 +101,14 @@ export default function PortfolioFull() {
           ) : data.length === 0 ? (
             <div className="portfolio-full-empty">Projects coming soon. <a href="/contact">Get in touch</a> to be our next case study.</div>
           ) : (
-            <div className="portfolio-full-grid">
-              {data.map(item => <Card key={item.id} item={item} />)}
-            </div>
+            <>
+              <div className="portfolio-full-grid">
+                {data.map(item => <Card key={item.id} item={item} />)}
+              </div>
+              {hasMore && <div ref={loadMoreRef} className="portfolio-full-load-more" aria-live="polite">
+                {loadingMore ? "Loading more projects..." : ""}
+              </div>}
+            </>
           )}
         </div>
       </section>
