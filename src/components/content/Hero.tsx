@@ -4,7 +4,6 @@ const cards = [
   { title: "Kopi Kledang", big: true, image: "/portfolio/caffe.webp" },
   { title: "Combucha Tea", big: false, image: "/portfolio/combucha-tea.webp" },
   { title: "Bold Blue Photography", big: false, image: "/portfolio/bold-blue-photography.webp" },
-  { title: "Mounti", big: true, image: "/portfolio/mounti.webp" },
 ]
 
 export default function Hero() {

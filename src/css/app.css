@@ -527,7 +527,7 @@ img { max-width: 100%; height: auto; }
 }
 .hero-fan-card {
   position: relative;
-  width: 150px; height: 300px;
+  width: 300px; height: 175px;
   margin: 0 -18px;
   border-radius: var(--r-lg);
   overflow: hidden;
