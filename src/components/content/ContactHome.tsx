@@ -1,8 +1,10 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import { useLanguage } from "../LanguageProvider";
 
 export default function ContactHome() {
+  const { t } = useLanguage();
   const [form, setForm] = useState({ name: "", email: "", company: "", service: "", budget: "", message: "" });
   const [sent, setSent] = useState(false);
 
@@ -19,12 +21,9 @@ export default function ContactHome() {
     <section className="contact-home-section" id="contact">
       <div className="contact-home-inner">
         <div>
-          <p className="contact-home-label">Start a Project</p>
-          <h2 className="contact-home-title">Let's build<br /><em>something great</em></h2>
-          <p className="contact-home-sub">
-            Tell us about your project. We'll get back to you within 24 hours
-            with honest advice — whether or not we're the right fit.
-          </p>
+          <p className="contact-home-label">{t("contactLabel")}</p>
+          <h2 className="contact-home-title" dangerouslySetInnerHTML={{ __html: t("buildSomething") }} />
+          <p className="contact-home-sub">{t("contactDescription")}</p>
           <div className="contact-home-contacts">
             <a href="https://wa.me/6285716275034" target="_blank" rel="noopener noreferrer" className="contact-home-contact">
               <div className="contact-home-contact-icon">
@@ -32,7 +31,7 @@ export default function ContactHome() {
               </div>
               <div>
                 <div className="contact-home-contact-label">WhatsApp</div>
-                <div className="contact-home-contact-sub">Fastest response</div>
+                <div className="contact-home-contact-sub">{t("fastestResponse")}</div>
               </div>
             </a>
             <a href="mailto:agencyalw@gmail.com" className="contact-home-contact">
@@ -49,7 +48,7 @@ export default function ContactHome() {
             </a>
           </div>
           <p className="contact-home-faq-hint">
-            Have questions before reaching out? <Link href="/faq">Check the FAQ →</Link>
+            {t("faqHint")} <Link href="/faq">{t("checkFaq")}</Link>
           </p>
         </div>
 
@@ -57,33 +56,33 @@ export default function ContactHome() {
           {sent ? (
             <div className="contact-home-thanks">
               <div className="contact-home-checkmark">✓</div>
-              <h3>Message sent!</h3>
-              <p>WhatsApp has opened with your details. We reply within 24 hours.</p>
+              <h3>{t("messageSent")}</h3>
+              <p>{t("whatsappOpened")}</p>
             </div>
           ) : (
             <form className="contact-home-form" onSubmit={handleSubmit}>
               <div className="contact-home-row">
                 <div className="contact-home-field">
-                  <label htmlFor="ch-name">Your name</label>
+                  <label htmlFor="ch-name">{t("yourName")}</label>
                   <input id="ch-name" type="text" placeholder="Jane Smith" value={form.name}
                     onChange={e => setForm({...form, name: e.target.value})} required />
                 </div>
                 <div className="contact-home-field">
-                  <label htmlFor="ch-email">Email address</label>
+                  <label htmlFor="ch-email">{t("emailAddress")}</label>
                   <input id="ch-email" type="email" placeholder="jane@company.com" value={form.email}
                     onChange={e => setForm({...form, email: e.target.value})} required />
                 </div>
               </div>
               <div className="contact-home-field">
-                <label htmlFor="ch-company">Company / business name</label>
+                <label htmlFor="ch-company">{t("companyName")}</label>
                 <input id="ch-company" type="text" placeholder="Acme Co." value={form.company}
                   onChange={e => setForm({...form, company: e.target.value})} />
               </div>
               <div className="contact-home-row">
                 <div className="contact-home-field">
-                  <label htmlFor="ch-service">Service needed</label>
+                  <label htmlFor="ch-service">{t("serviceNeeded")}</label>
                   <select id="ch-service" value={form.service} onChange={e => setForm({...form, service: e.target.value})}>
-                    <option value="">Select a service</option>
+                    <option value="">{t("selectService")}</option>
                     <option>Company Profile Website</option>
                     <option>E-Commerce Store</option>
                     <option>Internal Business System</option>
@@ -93,9 +92,9 @@ export default function ContactHome() {
                   </select>
                 </div>
                 <div className="contact-home-field">
-                  <label htmlFor="ch-budget">Budget range</label>
+                  <label htmlFor="ch-budget">{t("budgetRange")}</label>
                   <select id="ch-budget" value={form.budget} onChange={e => setForm({...form, budget: e.target.value})}>
-                    <option value="">Select budget</option>
+                    <option value="">{t("selectBudget")}</option>
                     <option>Under $500</option>
                     <option>$500 – $1,500</option>
                     <option>$1,500 – $5,000</option>
@@ -104,12 +103,12 @@ export default function ContactHome() {
                 </div>
               </div>
               <div className="contact-home-field">
-                <label htmlFor="ch-message">Tell us about your project</label>
+                <label htmlFor="ch-message">{t("projectDetails")}</label>
                 <textarea id="ch-message" rows={4} placeholder="What are you building? What problem does it solve? Any deadline?"
                   value={form.message} onChange={e => setForm({...form, message: e.target.value})} required />
               </div>
               <button type="submit" className="contact-home-submit">
-                Send via WhatsApp →
+                {t("sendWhatsapp")}
               </button>
             </form>
           )}

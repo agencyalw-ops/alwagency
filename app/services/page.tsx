@@ -1,15 +1,15 @@
-import type { Metadata } from 'next'
+"use client"
+
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import styles from './page.module.css'
 import Link from 'next/link'
+import { siteContent } from '@/lib/content'
+import { useLanguage } from '@/components/LanguageProvider'
 
-export const metadata: Metadata = {
-  title: 'Services — What We Build',
-  description: 'Company profiles, e-commerce stores, internal business systems, landing pages, and SaaS MVPs. Professional web development for growing SMBs worldwide.',
-}
-
-const services = [
+const services = siteContent.services
+/*
+const legacyServices = [
   {
     id: 'company-profile',
     num: '01',
@@ -51,8 +51,10 @@ const services = [
     from: '$499',
   },
 ]
+*/
 
 export default function ServicesPage() {
+  const { t } = useLanguage()
   return (
     <>
       <Navbar />
@@ -60,15 +62,9 @@ export default function ServicesPage() {
         {/* Hero */}
         <section className={styles.hero}>
           <div className={styles.inner}>
-            <p className={styles.label}>Our Services</p>
-            <h1 className={styles.heading}>
-              Everything your business<br />
-              needs <em>online</em>
-            </h1>
-            <p className={styles.sub}>
-              Four core services. Thousands of businesses served.
-              Whatever you need to build, we've built something like it before.
-            </p>
+            <p className={styles.label}>{t("ourServices")}</p>
+            <h1 className={styles.heading} dangerouslySetInnerHTML={{ __html: t("servicesHero") }} />
+            <p className={styles.sub}>{t("servicesSub")}</p>
           </div>
         </section>
 
@@ -86,10 +82,10 @@ export default function ServicesPage() {
                     {s.tags.map(t => <span key={t}>{t}</span>)}
                   </div>
                   <div className={styles.serviceFrom}>
-                    Starting from <strong>{s.from}</strong>
+                    {t("startingFrom")} <strong>{s.from}</strong>
                   </div>
                   <Link href="/contact" className={styles.serviceBtn}>
-                    Get a Quote →
+                    {t("getQuote")}
                   </Link>
                 </div>
                 <div className={styles.serviceRight}>
@@ -110,9 +106,9 @@ export default function ServicesPage() {
         {/* CTA */}
         <section className={styles.cta}>
           <div className={styles.inner}>
-            <h2 className={styles.ctaTitle}>Not sure which service you need?</h2>
-            <p className={styles.ctaSub}>Tell us about your business and we'll recommend the right approach — honestly.</p>
-            <Link href="/contact" className={styles.ctaBtn}>Talk to us →</Link>
+            <h2 className={styles.ctaTitle}>{t("unsureService")}</h2>
+            <p className={styles.ctaSub}>{t("serviceAdvice")}</p>
+            <Link href="/contact" className={styles.ctaBtn}>{t("talkToUs")}</Link>
           </div>
         </section>
       </main>

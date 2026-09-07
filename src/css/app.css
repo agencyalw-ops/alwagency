@@ -3,9 +3,7 @@
    CSS variables on <html> — no external font requests at runtime. */
 
 /* ==========================================================================
-   Design tokens — cinematic title-card identity: black / cream / poster-red,
-   bold serif display type + a red script accent, in the spirit of vintage
-   film title cards.
+  Design tokens — confident blue foundation with a warm orange accent.
    Color/opacity pairs below are chosen to meet WCAG AA contrast (4.5:1 body
    text, 3:1 large text / UI borders) against the surfaces they're used on.
    ========================================================================== */
@@ -14,13 +12,12 @@
   --paper: #f5f1e8;
   --cream: #e9e2d3;
 
-  /* Vivid poster red — background chips / large decorative use only */
-  --accent: #d1382a;
-  --accent2: #d1382a;
-  /* Same hue, darkened for use as small text/icons (the vivid version
-     falls short of contrast at body-text sizes on light surfaces) */
-  --accent-text: #9c2a1e;
-  --accent2-text: #9c2a1e;
+    /* Blue builds trust; orange adds energy to highlights and actions. */
+    --accent: #2563eb;
+    --accent2: #f97316;
+    /* Darker variants keep small labels readable on light surfaces. */
+    --accent-text: #1d4ed8;
+    --accent2-text: #c2410c;
   /* Text/icons placed on top of the vivid --accent chip — tuned per
      theme since --accent itself shifts brightness between themes */
   --on-accent: #f5f1e8;
@@ -48,10 +45,10 @@
   --ink: #f5f1e8;
   --paper: #121113;
   --cream: #1c1b1a;
-  --accent: #e0483a;
-  --accent2: #e0483a;
-  --accent-text: #e0483a;
-  --accent2-text: #e0483a;
+  --accent: #60a5fa;
+  --accent2: #fb923c;
+  --accent-text: #93c5fd;
+  --accent2-text: #fdba74;
   --on-accent: #121113;
   --muted: #8a8780;
   --border: rgba(245, 241, 232, 0.1);
@@ -109,8 +106,8 @@ img { max-width: 100%; height: auto; }
   to { transform: rotate(360deg); }
 }
 @keyframes pulse-border {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(209, 56, 42, 0.4); }
-  50% { box-shadow: 0 0 0 8px rgba(209, 56, 42, 0); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(37, 99, 235, 0); }
 }
 @keyframes scrollDown {
   0% { opacity: 0; transform: scaleY(0); transform-origin: top; }
@@ -212,6 +209,24 @@ img { max-width: 100%; height: auto; }
   background: var(--accent);
   color: var(--on-accent);
   transform: translateY(-1px);
+}
+
+.language-toggle {
+  border: 1px solid var(--border-strong);
+  background: transparent;
+  color: var(--fg);
+  border-radius: var(--r-full);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 700;
+  min-width: 36px;
+  padding: 5px 8px;
+  transition: all 0.2s ease;
+}
+.language-toggle:hover {
+  background: var(--fg);
+  color: var(--bg);
 }
 
 .nav-mobile-right {
@@ -506,7 +521,7 @@ img { max-width: 100%; height: auto; }
   background: var(--accent);
   color: var(--on-accent);
   display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 8px 18px rgba(209, 56, 42, 0.35);
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.35);
   transition: transform 0.25s ease;
   flex-shrink: 0;
 }
@@ -957,3 +972,81 @@ img { max-width: 100%; height: auto; }
 .portfolio-full-load-more { min-height: 24px; color: var(--muted); font-size: 0.875rem; }
 @media (max-width: 900px) { .portfolio-full-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 600px) { .portfolio-full-inner { padding: 0 20px; } .portfolio-full-grid { grid-template-columns: 1fr; } }
+
+/* ========================================================================
+  Conversion-focused homepage
+  ========================================================================== */
+.alw-container { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+.alw-new-hero { padding: 180px 0 128px; background: linear-gradient(135deg, var(--bg) 0%, color-mix(in srgb, var(--accent) 8%, var(--bg)) 100%); }
+.alw-new-hero .alw-container { max-width: 960px; text-align: center; }
+.alw-badge { display: inline-block; color: var(--accent-text); border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent); padding: 7px 14px; border-radius: var(--r-full); font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; }
+.alw-new-hero h1 { max-width: 900px; margin: 24px auto; font-family: var(--font-display); font-size: clamp(2.8rem, 7vw, 6.3rem); line-height: .98; letter-spacing: -.04em; }
+.alw-new-hero p { max-width: 660px; margin: 0 auto; color: var(--muted); font-size: 1.1rem; line-height: 1.8; }
+.alw-new-hero small { display: block; margin-top: 24px; color: var(--muted); }
+.alw-hero-cards { display: flex; justify-content: center; align-items: end; gap: 14px; min-height: 220px; margin: 54px auto 0; }
+.alw-hero-card { position: relative; display: block; width: 170px; height: 190px; overflow: hidden; border: 4px solid var(--bg); border-radius: 12px; background-position: center; background-size: cover; box-shadow: 0 16px 30px rgba(18, 17, 19, .16); transform: rotate(-8deg); transition: transform .3s ease, z-index .3s ease; }
+.alw-hero-card:nth-child(2) { transform: translateY(-22px); z-index: 2; }
+.alw-hero-card:nth-child(3) { transform: rotate(8deg); }
+.alw-hero-card-big { width: 220px; height: 230px; }
+.alw-hero-card:hover { z-index: 3; transform: translateY(-12px) rotate(0deg) scale(1.04); }
+.alw-hero-card span { position: absolute; right: 8px; bottom: 8px; left: 8px; padding: 6px 8px; border-radius: 6px; background: rgba(18, 17, 19, .72); color: #fff; font-size: .72rem; font-weight: 700; text-align: left; }
+.alw-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+.alw-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 0 20px; border-radius: var(--r-full); font-weight: 700; transition: transform .2s, background .2s; }
+.alw-btn:hover { transform: translateY(-2px); }
+.alw-btn-primary { background: var(--accent); color: var(--on-accent); }
+.alw-btn-primary:hover { background: var(--accent-text); }
+.alw-btn-ghost { border: 1px solid var(--border-strong); color: var(--fg); }
+.alw-btn-ghost:hover { background: var(--cream); }
+.alw-trust { padding: 42px 0; border-block: 1px solid var(--border); background: var(--cream); }
+.alw-stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.alw-stat-grid div { text-align: center; }
+.alw-stat-grid strong { display: block; color: var(--accent-text); font-family: var(--font-display); font-size: 2.4rem; }
+.alw-stat-grid span, .alw-trust p { color: var(--muted); font-size: .85rem; }
+.alw-trust p { margin-top: 28px; text-align: center; }
+.alw-section { padding: 112px 0; }
+.alw-soft { background: var(--cream); }
+.alw-section-intro { max-width: 650px; margin-bottom: 42px; }
+.alw-section-intro h2, .alw-final h2 { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 4.2rem); line-height: 1; letter-spacing: -.04em; margin-bottom: 16px; }
+.alw-section-intro p { color: var(--muted); line-height: 1.8; }
+.alw-card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.alw-four { grid-template-columns: repeat(4, 1fr); }
+.alw-feature-card, .alw-price-card, .alw-quote { display: flex; flex-direction: column; padding: 28px; border: 1px solid var(--border); background: var(--bg-card); border-radius: var(--r-md); transition: transform .25s, border-color .25s; }
+.alw-feature-card:hover { transform: translateY(-5px); border-color: var(--accent); }
+.alw-number, .alw-icon { color: var(--accent-text); font-size: .8rem; font-weight: 800; }
+.alw-feature-card h3, .alw-price-card h3 { margin: 22px 0 10px; font-size: 1.2rem; }
+.alw-feature-card p, .alw-price-card p, .alw-quote p { color: var(--muted); line-height: 1.7; font-size: .92rem; }
+.alw-feature-card b { margin-top: auto; padding-top: 22px; color: var(--accent-text); font-size: .85rem; }
+.alw-workflow { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+.alw-workflow article { border-top: 2px solid var(--accent); padding-top: 18px; }
+.alw-workflow span { color: var(--accent-text); font-weight: 800; }
+.alw-workflow h3 { margin: 16px 0 8px; }
+.alw-workflow p { color: var(--muted); font-size: .86rem; line-height: 1.65; }
+.alw-pricing { background: var(--bg); }
+.alw-trial { display: flex; justify-content: space-between; gap: 20px; padding: 20px 24px; margin-bottom: 24px; border-left: 4px solid var(--accent2); background: color-mix(in srgb, var(--accent2) 10%, var(--bg)); }
+.alw-trial span { color: var(--muted); }
+.alw-price-card { position: relative; }
+.alw-price-card.alw-highlight { border: 2px solid var(--accent2); box-shadow: 0 12px 30px color-mix(in srgb, var(--accent2) 14%, transparent); }
+.alw-price-card em { position: absolute; top: 18px; right: 18px; color: var(--accent2-text); font-size: .7rem; font-style: normal; font-weight: 800; text-transform: uppercase; }
+.alw-price-card small { color: var(--muted); }
+.alw-price-card > strong { font-family: var(--font-display); font-size: 2rem; }
+.alw-price-card ul { list-style: none; margin: 18px 0 24px; color: var(--muted); font-size: .88rem; line-height: 2; }
+.alw-price-card .alw-btn { margin-top: auto; }
+.alw-portfolio-note { padding: 34px; margin-bottom: 24px; border: 1px dashed var(--border-strong); color: var(--muted); }
+.alw-quote div { color: var(--accent2-text); letter-spacing: .15em; }
+.alw-quote strong { margin-top: auto; padding-top: 24px; }
+.alw-quote span { color: var(--muted); font-size: .8rem; }
+.alw-tech-list { display: flex; flex-wrap: wrap; gap: 10px; }
+.alw-tech-list span { padding: 12px 18px; border: 1px solid var(--border); border-radius: var(--r-full); background: var(--bg-card); font-weight: 600; }
+.alw-about .alw-container { display: grid; grid-template-columns: 1.2fr .8fr; gap: 70px; align-items: start; }
+.alw-blog { padding-left: 32px; border-left: 1px solid var(--border); }
+.alw-blog > span { color: var(--muted); }
+.alw-faq { max-width: 820px; }
+.alw-faq details { border-top: 1px solid var(--border); padding: 20px 0; }
+.alw-faq summary { cursor: pointer; font-weight: 700; }
+.alw-faq p { max-width: 720px; padding-top: 12px; color: var(--muted); line-height: 1.75; }
+.alw-final { padding: 120px 0; background: var(--ink); color: var(--paper); text-align: center; }
+.alw-final .alw-container { max-width: 780px; }
+.alw-final p { color: color-mix(in srgb, var(--paper) 68%, transparent); }
+.alw-final .alw-btn-ghost { color: var(--paper); border-color: color-mix(in srgb, var(--paper) 40%, transparent); }
+@media (max-width: 900px) { .alw-card-grid, .alw-four { grid-template-columns: repeat(2, 1fr); } .alw-workflow { grid-template-columns: repeat(3, 1fr); } .alw-about .alw-container { grid-template-columns: 1fr; gap: 40px; } .alw-blog { padding: 0; border: 0; } }
+@media (max-width: 600px) { .alw-container { padding: 0 20px; } .alw-new-hero { padding: 140px 0 90px; } .alw-stat-grid { grid-template-columns: repeat(2, 1fr); } .alw-section { padding: 80px 0; } .alw-card-grid, .alw-four, .alw-workflow { grid-template-columns: 1fr; } .alw-trial { flex-direction: column; } .alw-hero-cards { min-height: 175px; gap: 6px; margin-top: 40px; } .alw-hero-card { width: 105px; height: 145px; } .alw-hero-card-big { width: 135px; height: 170px; } }

@@ -1,7 +1,11 @@
+"use client";
+
 import Link from "next/link";
+import { useLanguage } from "./LanguageProvider";
 
 export default function Footer() {
   const year = new Date().getFullYear();
+  const { t } = useLanguage();
   return (
     <footer className="footer-footer">
       <div className="footer-inner">
@@ -9,8 +13,7 @@ export default function Footer() {
           <div>
             <div className="footer-logo">alw<span>.</span></div>
             <p className="footer-tagline">
-              Web development & digital products<br />
-              for growing SMBs, worldwide.
+              <span dangerouslySetInnerHTML={{ __html: t("footerTagline") }} />
             </p>
             <div className="footer-socials">
               <a href="https://wa.me/6285716275034" target="_blank" rel="noopener noreferrer" className="footer-social">WA</a>
@@ -21,7 +24,7 @@ export default function Footer() {
 
           <div className="footer-cols">
             <div className="footer-col">
-              <p className="footer-col-title">Services</p>
+              <p className="footer-col-title">{t("services")}</p>
               <ul>
                 <li><Link href="/services#company-profile">Company Profile</Link></li>
                 <li><Link href="/services#ecommerce">E-Commerce</Link></li>
@@ -30,7 +33,7 @@ export default function Footer() {
               </ul>
             </div>
             <div className="footer-col">
-              <p className="footer-col-title">Company</p>
+              <p className="footer-col-title">{t("company")}</p>
               <ul>
                 <li><Link href="/about">About Us</Link></li>
                 <li><Link href="/portfolio">Our Work</Link></li>
@@ -40,7 +43,7 @@ export default function Footer() {
               </ul>
             </div>
             <div className="footer-col">
-              <p className="footer-col-title">Get in Touch</p>
+              <p className="footer-col-title">{t("getInTouch")}</p>
               <ul>
                 <li><a href="https://wa.me/6285716275034" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
                 <li><a href="mailto:agencyalw@gmail.com">agencyalw@gmail.com</a></li>
@@ -50,8 +53,8 @@ export default function Footer() {
         </div>
 
         <div className="footer-bottom">
-          <p className="footer-copy">© {year} Alw Agency. All rights reserved.</p>
-          <p className="footer-built">Built in Wonosobo, serving the world.</p>
+          <p className="footer-copy">© {year} Alw Agency. {t("allRights")}</p>
+          <p className="footer-built">{t("builtIn")}</p>
         </div>
       </div>
     </footer>

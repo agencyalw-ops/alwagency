@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react"
 import { useRef } from "react"
 import Image from "next/image"
+import { useLanguage } from "../LanguageProvider"
 
 interface Item { id: number; title: string; description: string; image: string; link?: string }
 
@@ -12,6 +13,7 @@ async function fetchPortfolioPage(offset: number) {
 }
 
 function Card({ item }: { item: Item }) {
+  const { t } = useLanguage()
   return (
     <div className="portfolio-full-card">
       <div className="portfolio-full-img-wrap">
@@ -35,7 +37,7 @@ function Card({ item }: { item: Item }) {
         )}
         {item.link && (
           <a href={item.link} target="_blank" rel="noopener noreferrer" className="portfolio-full-overlay" aria-label={`View live: ${item.title}`}>
-            <span>View Live ↗</span>
+            <span>{t("viewLive")}</span>
           </a>
         )}
       </div>
@@ -48,6 +50,7 @@ function Card({ item }: { item: Item }) {
 }
 
 export default function PortfolioFull() {
+  const { t } = useLanguage()
   const [data, setData] = useState<Item[]>([])
   const [loading, setLoading] = useState(true)
   const [loadingMore, setLoadingMore] = useState(false)
@@ -85,28 +88,25 @@ export default function PortfolioFull() {
     <>
       <section className="portfolio-full-hero">
         <div className="portfolio-full-inner">
-          <p className="portfolio-full-label">Our Work</p>
-          <h1 className="portfolio-full-heading">Selected <em>projects</em></h1>
-          <p className="portfolio-full-sub">
-            A selection of websites and digital products we've built for
-            businesses across Indonesia and worldwide.
-          </p>
+          <p className="portfolio-full-label">{t("ourWork")}</p>
+          <h1 className="portfolio-full-heading" dangerouslySetInnerHTML={{ __html: t("portfolioTitle") }} />
+          <p className="portfolio-full-sub">{t("portfolioSub")}</p>
         </div>
       </section>
 
       <section className="portfolio-full-grid-section">
         <div className="portfolio-full-inner">
           {loading ? (
-            <div className="portfolio-full-loading">Loading projects...</div>
+            <div className="portfolio-full-loading">{t("loadingProjects")}</div>
           ) : data.length === 0 ? (
-            <div className="portfolio-full-empty">Projects coming soon. <a href="/contact">Get in touch</a> to be our next case study.</div>
+            <div className="portfolio-full-empty">{t("projectsSoon")} <a href="/contact">{t("getInTouchLabel")}</a> to be our next case study.</div>
           ) : (
             <>
               <div className="portfolio-full-grid">
                 {data.map(item => <Card key={item.id} item={item} />)}
               </div>
               {hasMore && <div ref={loadMoreRef} className="portfolio-full-load-more" aria-live="polite">
-                {loadingMore ? "Loading more projects..." : ""}
+                {loadingMore ? t("loadingMore") : ""}
               </div>}
             </>
           )}

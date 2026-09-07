@@ -1,15 +1,15 @@
-import type { Metadata } from 'next'
+"use client"
+
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import Link from 'next/link'
 import styles from './page.module.css'
+import { siteContent } from '@/lib/content'
+import { useLanguage } from '@/components/LanguageProvider'
 
-export const metadata: Metadata = {
-  title: 'Pricing — Honest, Fixed Packages',
-  description: 'Transparent, fixed-price web development packages starting from $499. No surprises, no hidden fees.',
-}
-
-const plans = [
+const plans = siteContent.plans
+/*
+const legacyPlans = [
   {
     tier: 'Starter', name: 'Launch', price: '$499', per: 'one-time',
     desc: 'For new businesses that need a professional online presence, fast.',
@@ -29,8 +29,11 @@ const plans = [
     featured: false, cta: 'Discuss your project',
   },
 ]
+*/
 
-const faqs = [
+const faqs = siteContent.pricingFaqs
+/*
+const legacyFaqs = [
   { q: 'How long does it take to build a website?', a: 'Most company profile websites take 1–2 weeks. E-commerce projects typically take 3–5 weeks. Custom business systems vary based on complexity.' },
   { q: 'Do you work with international clients?', a: 'Yes. We work with SMBs globally. Our team communicates in English and handles all time zones via async collaboration.' },
   { q: 'What happens after the website is launched?', a: 'We stay available after launch for questions and small fixes. For ongoing maintenance and updates, we offer retainer plans.' },
@@ -38,17 +41,19 @@ const faqs = [
   { q: 'Can I upgrade my package later?', a: 'Absolutely. Many clients start with Launch and upgrade to Growth as their business grows. We make migration seamless.' },
   { q: 'What if I need something not in the packages?', a: 'Contact us and describe your project. We\'ll give you an honest quote based on your specific needs.' },
 ]
+*/
 
 export default function PricingPage() {
+  const { t } = useLanguage()
   return (
     <>
       <Navbar />
       <main>
         <section className={styles.hero}>
           <div className={styles.inner}>
-            <p className={styles.label}>Pricing</p>
-            <h1 className={styles.heading}>Honest pricing,<br /><em>no surprises</em></h1>
-            <p className={styles.sub}>Fixed packages for the most common needs. Custom quotes for everything else.</p>
+            <p className={styles.label}>{t("pricingLabel")}</p>
+            <h1 className={styles.heading} dangerouslySetInnerHTML={{ __html: t("pricingHero") }} />
+            <p className={styles.sub}>{t("pricingPageSub")}</p>
           </div>
         </section>
 
@@ -57,7 +62,7 @@ export default function PricingPage() {
             <div className={styles.grid}>
               {plans.map(plan => (
                 <div key={plan.name} className={`${styles.card} ${plan.featured ? styles.featured : ''}`}>
-                  {plan.featured && <div className={styles.badge}>Most Popular</div>}
+                  {plan.featured && <div className={styles.badge}>{t("mostPopular")}</div>}
                   <div className={styles.tier}>{plan.tier}</div>
                   <div className={styles.name}>{plan.name}</div>
                   <div className={styles.price}>{plan.price}<span> / {plan.per}</span></div>
@@ -75,7 +80,7 @@ export default function PricingPage() {
         <section className={styles.faq}>
           <div className={styles.inner}>
             <p className={styles.label}>FAQ</p>
-            <h2 className={styles.faqTitle}>Common questions</h2>
+            <h2 className={styles.faqTitle}>{t("commonQuestions")}</h2>
             <div className={styles.faqs}>
               {faqs.map(f => (
                 <div key={f.q} className={styles.faqItem}>
@@ -89,9 +94,9 @@ export default function PricingPage() {
 
         <section className={styles.cta}>
           <div className={styles.inner}>
-            <h2 className={styles.ctaTitle}>Still have questions?</h2>
-            <p className={styles.ctaSub}>We'll give you a straight answer. No sales pitch.</p>
-            <Link href="/contact" className={styles.ctaBtn}>Talk to us →</Link>
+            <h2 className={styles.ctaTitle}>{t("stillQuestions")}</h2>
+            <p className={styles.ctaSub}>{t("noSalesPitch")}</p>
+            <Link href="/contact" className={styles.ctaBtn}>{t("talkToUs")}</Link>
           </div>
         </section>
       </main>

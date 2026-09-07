@@ -1,15 +1,15 @@
-import type { Metadata } from 'next'
+"use client"
+
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import Link from 'next/link'
 import styles from './page.module.css'
+import { siteContent } from '@/lib/content'
+import { useLanguage } from '@/components/LanguageProvider'
 
-export const metadata: Metadata = {
-  title: 'FAQ — Pricing, Process & Tech Stack',
-  description: 'Common questions about pricing, timeline, tech stack, and process for marketing websites, e-commerce, custom web apps, and MVPs built by Alw Agency.',
-}
-
-const faqs = [
+const faqs = siteContent.faqs
+/*
+const legacyFaqs = [
   {
     q: 'How much does a website cost?',
     a: "Pricing starts at $499 for a Focused Sprint — a tightly scoped marketing site with a clear brief and fast turnaround. Most product builds (e-commerce, custom features, integrations) start around $1,200. Larger custom apps, MVPs, and long-term engineering work are scoped individually since the range depends on complexity.",
@@ -55,8 +55,10 @@ const faqs = [
     a: "Share the problem, the product, or even a rough idea through the contact form. You'll get back a practical next step and an honest view of what it'll take to build.",
   },
 ]
+*/
 
 export default function FaqPage() {
+  const { t } = useLanguage()
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
@@ -79,8 +81,8 @@ export default function FaqPage() {
         <section className={styles.hero}>
           <div className={styles.inner}>
             <p className={styles.label}>FAQ</p>
-            <h1 className={styles.heading}>Questions, answered.</h1>
-            <p className={styles.sub}>Straight answers about pricing, timeline, and how we work.</p>
+            <h1 className={styles.heading}>{t("faqTitle")}</h1>
+            <p className={styles.sub}>{t("faqSub")}</p>
           </div>
         </section>
 
@@ -97,9 +99,9 @@ export default function FaqPage() {
 
         <section className={styles.cta}>
           <div className={styles.inner}>
-            <h2 className={styles.ctaTitle}>Still have questions?</h2>
-            <p className={styles.ctaSub}>We'll give you a straight answer. No sales pitch.</p>
-            <Link href="/contact" className={styles.ctaBtn}>Talk to us →</Link>
+            <h2 className={styles.ctaTitle}>{t("stillHaveQuestions")}</h2>
+            <p className={styles.ctaSub}>{t("noSalesPitch")}</p>
+            <Link href="/contact" className={styles.ctaBtn}>{t("talkToUs")}</Link>
           </div>
         </section>
       </main>

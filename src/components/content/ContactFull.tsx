@@ -1,7 +1,9 @@
 "use client";
 import { useState } from "react";
+import { useLanguage } from "../LanguageProvider";
 
 export default function ContactFull() {
+  const { t } = useLanguage() as unknown as { t: (key: string) => string };
   const [form, setForm] = useState({ name: "", email: "", company: "", service: "", budget: "", message: "" });
   const [sent, setSent] = useState(false);
 
@@ -18,12 +20,9 @@ export default function ContactFull() {
     <>
       <section className="contact-full-hero">
         <div className="contact-full-inner">
-          <p className="contact-full-label">Start a Project</p>
-          <h1 className="contact-full-heading">Let's build<br /><em>something great</em></h1>
-          <p className="contact-full-sub">
-            Tell us about your project. We'll get back to you within 24 hours
-            with honest advice — whether or not we're the right fit.
-          </p>
+          <p className="contact-full-label">{t("contactLabel")}</p>
+          <h1 className="contact-full-heading" dangerouslySetInnerHTML={{ __html: t("buildSomething") }} />
+          <p className="contact-full-sub">{t("contactDescription")}</p>
         </div>
       </section>
 
@@ -41,7 +40,7 @@ export default function ContactFull() {
                 <div>
                   <div className="contact-full-contact-label">WhatsApp</div>
                   <a href="https://wa.me/6285716275034" target="_blank" rel="noopener noreferrer" className="contact-full-contact-val">+62 857 1627 5034</a>
-                  <div className="contact-full-contact-note">Fastest response</div>
+                  <div className="contact-full-contact-note">{t("fastestResponse")}</div>
                 </div>
               </div>
 
@@ -55,7 +54,7 @@ export default function ContactFull() {
                 <div>
                   <div className="contact-full-contact-label">Email</div>
                   <a href="mailto:agencyalw@gmail.com" className="contact-full-contact-val">agencyalw@gmail.com</a>
-                  <div className="contact-full-contact-note">We reply within 24 hours</div>
+                  <div className="contact-full-contact-note">{t("reply24")}</div>
                 </div>
               </div>
 
@@ -67,9 +66,9 @@ export default function ContactFull() {
                   </svg>
                 </div>
                 <div>
-                  <div className="contact-full-contact-label">Location</div>
+                  <div className="contact-full-contact-label">{t("location")}</div>
                   <div className="contact-full-contact-val">Wonosobo, Central Java</div>
-                  <div className="contact-full-contact-note">Working with clients worldwide</div>
+                  <div className="contact-full-contact-note">{t("worldwide")}</div>
                 </div>
               </div>
 
@@ -83,8 +82,8 @@ export default function ContactFull() {
               {sent ? (
                 <div className="contact-full-thanks">
                   <div className="contact-full-checkmark">✓</div>
-                  <h3>Message sent!</h3>
-                  <p>WhatsApp has opened with your details. We'll reply within 24 hours.</p>
+                  <h3>{t("messageSent")}</h3>
+                  <p>{t("whatsappOpened")}</p>
                 </div>
               ) : (
                 <form className="contact-full-form" onSubmit={handleSubmit}>
@@ -134,8 +133,8 @@ export default function ContactFull() {
                     <textarea id="cf-message" rows={5} placeholder="What are you building? What problem does it solve? Any deadline?"
                       value={form.message} onChange={e => setForm({...form, message: e.target.value})} required />
                   </div>
-                  <button type="submit" className="contact-full-submit">Send via WhatsApp →</button>
-                  <p className="contact-full-note">Your details will be sent via WhatsApp. We reply within 24 hours.</p>
+                  <button type="submit" className="contact-full-submit">{t("sendWhatsapp")}</button>
+                  <p className="contact-full-note">{t("yourDetailsWhatsapp")}</p>
                 </form>
               )}
             </div>

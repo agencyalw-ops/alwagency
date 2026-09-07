@@ -2,6 +2,7 @@
 import type { Metadata } from 'next'
 import { Bodoni_Moda, Playball, DM_Sans } from 'next/font/google'
 import "@/css/app.css";
+import { LanguageProvider } from '@/components/LanguageProvider'
 
 const bodoniModa = Bodoni_Moda({
   subsets: ['latin'],
@@ -122,14 +123,14 @@ const jsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${bodoniModa.variable} ${playball.variable} ${dmSans.variable}`}>
+    <html lang="id" className={`${bodoniModa.variable} ${playball.variable} ${dmSans.variable}`}>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body>{children}</body>
+      <body><LanguageProvider>{children}</LanguageProvider></body>
     </html>
   )
 }

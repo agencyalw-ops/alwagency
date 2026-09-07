@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { useLanguage } from "../LanguageProvider";
 
 const plans = [
   {
@@ -22,22 +25,23 @@ const plans = [
 ];
 
 export default function PricingHome() {
+  const { t } = useLanguage();
   return (
     <section className="pricing-home-section" id="pricing">
       <div className="pricing-home-inner">
         <div className="pricing-home-header">
-          <p className="pricing-home-label">Pricing</p>
-          <h2 className="pricing-home-title">Honest pricing,<br /><em>no surprises</em></h2>
+          <p className="pricing-home-label">{t("pricingLabel")}</p>
+          <h2 className="pricing-home-title" dangerouslySetInnerHTML={{ __html: t("honestPricing") }} />
           <p className="pricing-home-sub">
-            Fixed packages for the most common needs. Not sure which fits?{" "}
-            <Link href="/contact">Tell us about your project</Link> and we'll advise honestly.
+            {t("pricingDescription")} {" "}
+            <Link href="/contact">{t("tellProject")}</Link>{t("advise")}
           </p>
         </div>
 
         <div className="pricing-home-grid">
           {plans.map(plan => (
             <div key={plan.name} className={`pricing-home-card ${plan.featured ? "pricing-home-featured" : ""}`}>
-              {plan.featured && <div className="pricing-home-badge">Most Popular</div>}
+              {plan.featured && <div className="pricing-home-badge">{t("mostPopular")}</div>}
               <div className="pricing-home-tier">{plan.tier}</div>
               <div className="pricing-home-name">{plan.name}</div>
               <div className="pricing-home-price">{plan.price} <span>/ {plan.per}</span></div>
@@ -46,7 +50,7 @@ export default function PricingHome() {
                 {plan.features.map(f => <li key={f}><span className="pricing-home-check">✓</span>{f}</li>)}
               </ul>
               <Link href="/contact" className={`pricing-home-btn ${plan.featured ? "pricing-home-btn-featured" : ""}`}>
-                {plan.cta}
+                {plan.name === "Scale" ? t("discussProject") : t("getStarted")}
               </Link>
             </div>
           ))}

@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
+import { useLanguage } from "../LanguageProvider"
 
 interface Item { id: number; title: string; description: string; image: string; link?: string }
 
@@ -40,6 +41,7 @@ function Card({ item }: { item: Item }) {
 }
 
 export default function PortfolioHome() {
+  const { t } = useLanguage()
   const [data, setData] = useState<Item[]>([])
 
   useEffect(() => {
@@ -56,10 +58,10 @@ export default function PortfolioHome() {
       <div className="portfolio-home-inner">
         <div className="portfolio-home-header">
           <div>
-            <p className="portfolio-home-label">Our Work</p>
-            <h2 className="portfolio-home-title">Selected <em>projects</em></h2>
+            <p className="portfolio-home-label">{t("ourWork")}</p>
+            <h2 className="portfolio-home-title" dangerouslySetInnerHTML={{ __html: t("selectedProjects") }} />
           </div>
-          <Link href="/portfolio" className="portfolio-home-view-all">View all projects →</Link>
+          <Link href="/portfolio" className="portfolio-home-view-all">{t("viewProjects")}</Link>
         </div>
         <div className="portfolio-home-grid">
           {data.map(item => <Card key={item.id} item={item} />)}

@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { useLanguage } from "../LanguageProvider";
 
 const services = [
   {
@@ -32,13 +35,14 @@ const services = [
 ];
 
 export default function ServicesHome() {
+  const { t } = useLanguage();
   return (
     <section className="services-home-section" id="services">
       <div className="services-home-inner">
         <div className="services-home-header">
-          <div className="services-home-label">Our Services</div>
-          <h2 className="services-home-title">What we <em>build</em><br />for you</h2>
-          <Link href="/services" className="services-home-view-all">View all services →</Link>
+          <div className="services-home-label">{t("ourServices")}</div>
+          <h2 className="services-home-title" dangerouslySetInnerHTML={{ __html: t("buildForYou") }} />
+          <Link href="/services" className="services-home-view-all">{t("viewServices")}</Link>
         </div>
 
         <div className="services-home-grid">

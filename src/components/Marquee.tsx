@@ -1,10 +1,6 @@
-const items = [
-  "Next.js", "✦", "TypeScript", "✦", "React", "✦",
-  "Product UI", "✦", "Web Apps", "✦", "API Integrations", "✦",
-  "Database Systems", "✦", "Responsive Design", "✦", "Next.js", "✦",
-  "TypeScript", "✦", "React", "✦", "Product UI", "✦",
-  "Web Apps", "✦", "API Integrations", "✦", "Database Systems", "✦", "Responsive Design", "✦",
-];
+import { siteContent } from "@/lib/content";
+
+const items = [...siteContent.marquee, ...siteContent.marquee];
 
 export default function Marquee() {
   return (
