@@ -1,8 +1,9 @@
-
 import type { Metadata } from 'next'
 import { Bodoni_Moda, Playball, DM_Sans } from 'next/font/google'
+import { Suspense } from 'react'
 import "@/css/app.css";
 import { LanguageProvider } from '@/components/LanguageProvider'
+import MetaPixel from '@/components/MetaPixel'
 
 const bodoniModa = Bodoni_Moda({
   subsets: ['latin'],
@@ -24,6 +25,7 @@ const dmSans = DM_Sans({
   variable: '--font-dmsans',
   display: 'swap',
 })
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://alwgen.com'),
   title: {
@@ -130,7 +132,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body><LanguageProvider>{children}</LanguageProvider></body>
+      <body>
+        <LanguageProvider>{children}</LanguageProvider>
+        <Suspense fallback={null}>
+          <MetaPixel />
+        </Suspense>
+      </body>
     </html>
   )
 }
