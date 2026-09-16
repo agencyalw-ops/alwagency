@@ -1,20 +1,34 @@
 "use client";
 
 import { useEffect } from "react";
+import { useRef } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import Script from "next/script";
 
-const PIXEL_ID = "2344995952705070";
+const PIXEL_ID = "2518819108617079";
+
+declare global {
+  interface Window {
+    fbq?: (...args: unknown[]) => void;
+  }
+}
 
 export default function MetaPixel() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const isInitialRender = useRef(true);
+  const queryString = searchParams.toString();
 
   useEffect(() => {
-    if (typeof window !== "undefined" && (window as any).fbq) {
-      (window as any).fbq("track", "PageView");
+    if (isInitialRender.current) {
+      isInitialRender.current = false;
+      return;
     }
-  }, [pathname, searchParams]);
+
+    if (window.fbq) {
+      window.fbq("track", "PageView");
+    }
+  }, [pathname, queryString]);
 
   return (
     <>
